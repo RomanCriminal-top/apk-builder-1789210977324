@@ -1,0 +1,2060 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#f7f9fd">
+<title>@RomanCriminal • Notebook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-color:#f7f9fd;--card-bg:#fff;--text-main:#191c20;--text-secondary:#43474e;
+  --text-muted:#73777f;--border-color:#e0e2ec;--primary:#005ac1;--primary-hover:#004593;
+  --primary-light:#d8e2ff;--danger:#ba1a1a;--danger-hover:#93000a;--danger-bg:#ffdad6;
+  --hover-bg:rgba(67,71,78,.08);--active-tab:#d8e2ff;
+  --header-height:60px;--radius-md:20px;--radius-lg:26px;
+  --ease-out-expo:cubic-bezier(.16,1,.3,1);
+  --ease-bounce:cubic-bezier(.34,1.56,.64,1);
+  --ease-soft:cubic-bezier(.25,.46,.45,.94);
+  --shadow-card:0 4px 18px rgba(0,0,0,.05);
+  --shadow-hover:0 8px 22px rgba(0,90,193,.12);
+  --shadow-pop:0 20px 50px rgba(0,0,0,.20);
+}
+body[data-theme="light"]{--bg-color:#f7f9fd;--card-bg:#fff;--text-main:#191c20;--text-secondary:#43474e;--text-muted:#73777f;--border-color:#e0e2ec;--primary:#005ac1;--primary-hover:#004593;--primary-light:#d8e2ff;--hover-bg:rgba(67,71,78,.08);--active-tab:#d8e2ff}
+body[data-theme="cream"]{--bg-color:#faf6ee;--card-bg:#fffdf7;--text-main:#2b2419;--text-secondary:#5a5040;--text-muted:#8a7f6b;--border-color:#ece3d2;--primary:#a06a1e;--primary-hover:#7d5214;--primary-light:#f7e7c8;--hover-bg:rgba(90,80,64,.08);--active-tab:#f7e7c8}
+body[data-theme="sand"]{--bg-color:#f8f3e8;--card-bg:#fffcf3;--text-main:#2d2517;--text-secondary:#5a4f38;--text-muted:#8a7d63;--border-color:#eae0c8;--primary:#b8860b;--primary-hover:#946d09;--primary-light:#f7ecc8;--hover-bg:rgba(90,79,56,.08);--active-tab:#f7ecc8}
+body[data-theme="lemon"]{--bg-color:#fdfbe8;--card-bg:#fffef7;--text-main:#262310;--text-secondary:#54502a;--text-muted:#8a844f;--border-color:#efead0;--primary:#b8a419;--primary-hover:#948214;--primary-light:#f7f0c0;--hover-bg:rgba(84,80,42,.08);--active-tab:#f7f0c0}
+body[data-theme="peach"]{--bg-color:#fff3ea;--card-bg:#fffbf6;--text-main:#2e1a0f;--text-secondary:#5c3d28;--text-muted:#8f6a4e;--border-color:#f5e0cf;--primary:#d2691e;--primary-hover:#a85114;--primary-light:#fbe0c8;--hover-bg:rgba(92,61,40,.08);--active-tab:#fbe0c8}
+body[data-theme="coral"]{--bg-color:#fef1ed;--card-bg:#fff;--text-main:#2e1611;--text-secondary:#5e382e;--text-muted:#91695b;--border-color:#f5dbd0;--primary:#e05a3a;--primary-hover:#c04528;--primary-light:#fbd6c9;--hover-bg:rgba(94,56,46,.08);--active-tab:#fbd6c9}
+body[data-theme="rose"]{--bg-color:#fdf1f5;--card-bg:#fff;--text-main:#2e1620;--text-secondary:#5e3a48;--text-muted:#916a79;--border-color:#f5dbe4;--primary:#c03a68;--primary-hover:#9c2a52;--primary-light:#fbd3e0;--hover-bg:rgba(94,58,72,.08);--active-tab:#fbd3e0}
+body[data-theme="lavender"]{--bg-color:#f4f0fc;--card-bg:#fff;--text-main:#211a30;--text-secondary:#4a4060;--text-muted:#7a6f92;--border-color:#e2dbf5;--primary:#6d3fc4;--primary-hover:#542fa0;--primary-light:#e2d6fb;--hover-bg:rgba(74,64,96,.08);--active-tab:#e2d6fb}
+body[data-theme="lilac"]{--bg-color:#f8f1fa;--card-bg:#fff;--text-main:#251630;--text-secondary:#4f3660;--text-muted:#7d6890;--border-color:#e9dcf0;--primary:#9c4fc4;--primary-hover:#7e3aa4;--primary-light:#ecd4f7;--hover-bg:rgba(79,54,96,.08);--active-tab:#ecd4f7}
+body[data-theme="sky"]{--bg-color:#eef6fd;--card-bg:#fff;--text-main:#101f2e;--text-secondary:#38516b;--text-muted:#6b849c;--border-color:#d3e6f5;--primary:#1a6fc0;--primary-hover:#13549a;--primary-light:#cde5fb;--hover-bg:rgba(56,81,107,.08);--active-tab:#cde5fb}
+body[data-theme="ocean"]{--bg-color:#e8f6f7;--card-bg:#fff;--text-main:#0d2426;--text-secondary:#2c5153;--text-muted:#5c8385;--border-color:#c8e8ea;--primary:#0e7c86;--primary-hover:#0a5d65;--primary-light:#c5eced;--hover-bg:rgba(44,81,83,.08);--active-tab:#c5eced}
+body[data-theme="mint"]{--bg-color:#eefaf3;--card-bg:#fff;--text-main:#10241a;--text-secondary:#3d5a4a;--text-muted:#6f8a7a;--border-color:#d3ecdd;--primary:#1a7a4a;--primary-hover:#135e38;--primary-light:#c9f0d9;--hover-bg:rgba(61,90,74,.08);--active-tab:#c9f0d9}
+body[data-theme="charcoal"]{--bg-color:#121316;--card-bg:#1c1d22;--text-main:#e3e5ed;--text-secondary:#a3a7b2;--text-muted:#7a7f8d;--border-color:#2b2e38;--primary:#3b82f6;--primary-hover:#60a5fa;--primary-light:#1e2c45;--hover-bg:rgba(255,255,255,.08);--active-tab:#263859}
+body[data-theme="graphite"]{--bg-color:#1a1b1e;--card-bg:#242629;--text-main:#e8eaed;--text-secondary:#b0b4b9;--text-muted:#808589;--border-color:#35383c;--primary:#a8aab0;--primary-hover:#c0c2c8;--primary-light:#2f3237;--hover-bg:rgba(255,255,255,.08);--active-tab:#35383c}
+body[data-theme="midnight"]{--bg-color:#0a0f1c;--card-bg:#131a2b;--text-main:#e6ecf7;--text-secondary:#a0abc2;--text-muted:#6f7a92;--border-color:#1f2940;--primary:#5b8def;--primary-hover:#7ea8f4;--primary-light:#1a2743;--hover-bg:rgba(255,255,255,.07);--active-tab:#1f3055}
+body[data-theme="indigo"]{--bg-color:#0e1024;--card-bg:#191c38;--text-main:#e4e7f5;--text-secondary:#a3a8c4;--text-muted:#717a99;--border-color:#252a4a;--primary:#7c7ce8;--primary-hover:#9a9af0;--primary-light:#232750;--hover-bg:rgba(255,255,255,.08);--active-tab:#232750}
+body[data-theme="nord"]{--bg-color:#1b2230;--card-bg:#252d3d;--text-main:#e5ecf4;--text-secondary:#a6b3c8;--text-muted:#71809c;--border-color:#333d52;--primary:#88c0d0;--primary-hover:#a3d1de;--primary-light:#2c3a4c;--hover-bg:rgba(255,255,255,.08);--active-tab:#2c3a4c}
+body[data-theme="deep-ocean"]{--bg-color:#071820;--card-bg:#0e2430;--text-main:#d8eef5;--text-secondary:#97bcc8;--text-muted:#6a8e9c;--border-color:#1c3a48;--primary:#2da8c4;--primary-hover:#4dc0da;--primary-light:#123846;--hover-bg:rgba(255,255,255,.08);--active-tab:#123846}
+body[data-theme="forest"]{--bg-color:#0e1a14;--card-bg:#16261d;--text-main:#e2f0e6;--text-secondary:#a2bfa9;--text-muted:#6f8a78;--border-color:#223a2c;--primary:#4caf7d;--primary-hover:#6fcb9a;--primary-light:#1c3626;--hover-bg:rgba(255,255,255,.07);--active-tab:#1e3a28}
+body[data-theme="wine"]{--bg-color:#1a0d12;--card-bg:#26151c;--text-main:#f4e2e8;--text-secondary:#c4a3ae;--text-muted:#8e6f7a;--border-color:#3a2029;--primary:#d05a7a;--primary-hover:#e07d98;--primary-light:#3a1e29;--hover-bg:rgba(255,255,255,.07);--active-tab:#3a1f2b}
+body[data-theme="burgundy"]{--bg-color:#1c0810;--card-bg:#2a0f1a;--text-main:#f5dce5;--text-secondary:#c99cae;--text-muted:#96687c;--border-color:#3e1a27;--primary:#c4305c;--primary-hover:#dc4a76;--primary-light:#3e1424;--hover-bg:rgba(255,255,255,.08);--active-tab:#3e1424}
+body[data-theme="cocoa"]{--bg-color:#1a120c;--card-bg:#241a12;--text-main:#f0e6dc;--text-secondary:#c4b3a3;--text-muted:#8e7d6e;--border-color:#3a2a1e;--primary:#c08552;--primary-hover:#d9a273;--primary-light:#3a2818;--hover-bg:rgba(255,255,255,.07);--active-tab:#3a2818}
+body[data-theme="sunset"]{--bg-color:#2a1420;--card-bg:#381a2a;--text-main:#fbe4ee;--text-secondary:#d4a4b8;--text-muted:#a07287;--border-color:#4c2839;--primary:#f08cae;--primary-hover:#f4a8c4;--primary-light:#4c2338;--hover-bg:rgba(255,255,255,.08);--active-tab:#4c2338}
+body[data-theme="plum"]{--bg-color:#160f1e;--card-bg:#20162c;--text-main:#ece4f5;--text-secondary:#b6a6cc;--text-muted:#837198;--border-color:#2e2140;--primary:#b87ee8;--primary-hover:#c99cf0;--primary-light:#291a3c;--hover-bg:rgba(255,255,255,.08);--active-tab:#291a3c}
+
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Google Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background-color:var(--bg-color);color:var(--text-main);
+  min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;touch-action:manipulation;
+  transition:background-color .25s var(--ease-soft),color .25s var(--ease-soft);
+}
+header{
+  height:var(--header-height);border-bottom:1px solid var(--border-color);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 12px;position:sticky;top:0;background:var(--card-bg);z-index:100;gap:8px;
+  transition:background-color .25s var(--ease-soft),border-color .25s var(--ease-soft);
+}
+.icon-btn{
+  width:42px;height:42px;border-radius:50%;border:none;background:transparent;
+  cursor:pointer;display:inline-flex;align-items:center;justify-content:center;
+  color:var(--text-secondary);flex-shrink:0;
+  transition:background-color .18s var(--ease-soft),color .18s var(--ease-soft),transform .25s var(--ease-bounce);
+}
+.icon-btn:hover{background-color:var(--hover-bg);color:var(--text-main)}
+.icon-btn:active{transform:scale(.86);background-color:var(--hover-bg)}
+.header-center{flex:1;display:flex;justify-content:center;max-width:640px;margin:0 auto}
+.header-search{
+  position:relative;display:flex;align-items:center;width:100%;
+  background:var(--hover-bg);border-radius:24px;padding:0 14px;height:44px;
+  border:1.5px solid transparent;
+  transition:background-color .2s var(--ease-soft),border-color .2s var(--ease-soft),box-shadow .2s var(--ease-soft);
+}
+.header-search:focus-within{
+  background-color:var(--card-bg);box-shadow:0 6px 22px rgba(0,90,193,.16);
+  border-color:var(--primary);
+}
+.search-icon{color:var(--text-secondary);flex-shrink:0;margin-right:8px;display:flex;transition:color .18s var(--ease-soft)}
+.header-search:focus-within .search-icon{color:var(--primary)}
+.header-search input{width:100%;border:none;background:transparent;outline:none;font-size:15px;font-family:inherit;color:var(--text-main)}
+.header-search input::placeholder{color:var(--text-muted)}
+.search-clear-btn{
+  background:transparent;border:none;color:var(--text-secondary);font-size:13px;
+  cursor:pointer;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  margin-left:4px;flex-shrink:0;opacity:0;pointer-events:none;
+  transition:opacity .18s var(--ease-soft),background-color .18s var(--ease-soft);
+}
+.search-clear-btn.visible{opacity:1;pointer-events:auto}
+.search-clear-btn:active{background:var(--hover-bg)}
+.header-right-spacer{width:42px;flex-shrink:0}
+.app-body{display:flex;flex:1;position:relative;min-height:0}
+.sidebar-backdrop{
+  position:fixed;inset:0;background:rgba(10,14,22,.55);
+  z-index:500;opacity:0;pointer-events:none;
+  transition:opacity .25s var(--ease-soft);
+  backdrop-filter:blur(0px);-webkit-backdrop-filter:blur(0px);
+}
+.sidebar-backdrop.active{opacity:1;pointer-events:auto;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+aside{
+  position:fixed;left:0;top:0;bottom:0;width:300px;max-width:80vw;
+  background:var(--card-bg);box-shadow:8px 0 30px rgba(0,0,0,.22);
+  transform:translate3d(-100%,0,0);
+  transition:transform .3s var(--ease-out-expo),background-color .25s var(--ease-soft);
+  z-index:550;display:flex;flex-direction:column;padding:0 12px 20px;
+}
+aside.open{transform:translate3d(0,0,0)}
+.sidebar-header{
+  height:var(--header-height);display:flex;align-items:center;justify-content:center;
+  padding:0 16px;margin-bottom:12px;border-bottom:1px solid var(--border-color);flex-shrink:0;
+}
+.sidebar-brand-title{
+  font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;
+  letter-spacing:-.3px;color:var(--text-main);white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis;cursor:pointer;text-align:center;margin:0 auto;
+}
+.nav-item{
+  display:flex;align-items:center;height:50px;padding:0 18px;border-radius:25px;
+  cursor:pointer;color:var(--text-main);font-size:14.5px;font-weight:500;gap:16px;margin-bottom:4px;
+  transition:background-color .18s var(--ease-soft),color .18s var(--ease-soft),transform .25s var(--ease-bounce);
+}
+.nav-item:active{background-color:var(--hover-bg);transform:scale(.97)}
+.nav-item.active{background-color:var(--active-tab);color:var(--primary);font-weight:600}
+.nav-item svg{flex-shrink:0;transition:fill .18s var(--ease-soft)}
+.nav-item.active svg{fill:var(--primary)}
+main{flex:1;padding:16px 12px 110px;max-width:1200px;margin:0 auto;width:100%}
+.section-label{
+  font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;
+  color:var(--text-secondary);margin:16px 0 10px 6px;
+}
+.notes-container{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:12px;align-items:start;
+}
+@media (min-width:768px){.notes-container{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}}
+@media (min-width:1200px){.notes-container{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}}
+.note-card{
+  border:1px solid var(--border-color);border-radius:var(--radius-md);
+  padding:18px 16px;cursor:pointer;position:relative;
+  background-color:var(--card-bg);display:flex;flex-direction:column;
+  word-break:break-word;overflow:hidden;box-shadow:var(--shadow-card);
+  transition:transform .22s var(--ease-out-expo),box-shadow .22s var(--ease-soft),border-color .22s var(--ease-soft),background-color .25s var(--ease-soft);
+  contain:layout style;
+}
+.note-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover);border-color:var(--primary)}
+.note-card:active{transform:scale(.97);transition-duration:.1s}
+.card-title{font-size:15.5px;font-weight:600;line-height:1.4;color:var(--text-main)}
+.card-footer-info{
+  display:flex;align-items:center;gap:8px;margin-top:10px;
+  font-size:11.5px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;flex-wrap:wrap;
+}
+.card-attach-badge{
+  display:inline-flex;align-items:center;gap:4px;background:var(--hover-bg);
+  padding:2px 7px;border-radius:8px;font-size:11px;
+}
+.empty-state{text-align:center;margin:80px auto;color:var(--text-muted)}
+.empty-state-icon{
+  width:84px;height:84px;background:var(--hover-bg);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;margin:0 auto 16px;
+}
+.empty-state-icon svg{width:40px;height:40px;fill:var(--text-muted)}
+.empty-state p{font-size:16px;font-weight:500}
+.fab-btn{
+  position:fixed;bottom:24px;right:24px;width:58px;height:58px;
+  border-radius:20px;background:var(--primary);color:#fff;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 20px rgba(0,90,193,.38);z-index:400;
+  transition:transform .25s var(--ease-bounce),box-shadow .22s var(--ease-soft),background-color .25s var(--ease-soft);
+}
+.fab-btn svg{transition:transform .3s var(--ease-bounce)}
+.fab-btn:hover{box-shadow:0 10px 26px rgba(0,90,193,.5);transform:scale(1.05)}
+.fab-btn:hover svg{transform:rotate(90deg)}
+.fab-btn:active{transform:scale(.85);transition-duration:.1s}
+.fullscreen-creator-overlay{
+  position:fixed;inset:0;background:var(--card-bg);z-index:1200;
+  display:flex;flex-direction:column;
+  transform:translate3d(0,100%,0);opacity:0;visibility:hidden;pointer-events:none;
+  transition:transform .32s var(--ease-out-expo),opacity .22s var(--ease-soft),visibility .32s,background-color .25s var(--ease-soft);
+  overflow:hidden;
+}
+.fullscreen-creator-overlay.open{transform:translate3d(0,0,0);opacity:1;visibility:visible;pointer-events:auto}
+.fs-header{
+  height:var(--header-height);display:flex;align-items:center;justify-content:space-between;
+  padding:0 12px;border-bottom:1px solid var(--border-color);flex-shrink:0;
+  background:var(--card-bg);z-index:10;gap:6px;
+}
+.fs-header-left{display:flex;align-items:center;gap:8px;min-width:0}
+.fs-header-title{font-size:16px;font-weight:700;color:var(--text-main);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fs-header-actions{display:flex;align-items:center;gap:2px;flex-shrink:0}
+.fs-body{
+  flex:1;padding:14px 18px 140px;overflow-y:auto;
+  display:flex;flex-direction:column;max-width:820px;width:100%;margin:0 auto;
+  -webkit-overflow-scrolling:touch;
+}
+.note-meta-block{margin-bottom:10px;flex-shrink:0}
+.title-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:4px}
+.fs-title-box{
+  width:100%;border:none;outline:none;font-size:20px;font-weight:normal;
+  color:var(--text-main);background:transparent;min-height:34px;line-height:1.45;
+  font-family:inherit;word-break:break-word;
+}
+.fs-title-box:empty:before{content:attr(placeholder);color:var(--text-muted);pointer-events:none}
+.title-counter-badge{
+  font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--text-muted);
+  background:var(--hover-bg);padding:4px 10px;border-radius:12px;flex-shrink:0;
+}
+.note-meta-line{
+  font-family:'JetBrains Mono',monospace;font-size:11.5px;line-height:1.4;
+  color:var(--text-muted);padding-left:2px;
+}
+.note-editor-flow{display:flex;flex-direction:column;width:100%;flex-grow:1}
+.fs-rich-editor{
+  width:100%;border:none;outline:none;font-size:16px;color:var(--text-main);
+  font-family:inherit;min-height:48px;line-height:1.65;background:transparent;
+  word-break:break-word;overflow-wrap:break-word;white-space:pre-wrap;padding:0;margin:0;
+}
+.fs-rich-editor:empty:before{content:attr(placeholder);color:var(--text-muted);pointer-events:none}
+.fs-rich-editor div,.fs-rich-editor p{min-height:1.4em}
+.note-link{color:inherit;text-decoration:none;cursor:text;word-break:break-all}
+.viewer-mode .fs-rich-editor,.viewer-mode .fs-title-box{cursor:pointer}
+.viewer-mode .note-link{
+  color:var(--primary);text-decoration:underline;text-decoration-thickness:1.5px;
+  text-underline-offset:2px;cursor:pointer;
+}
+body.links-disabled .note-link{color:inherit!important;text-decoration:none!important;cursor:text!important}
+.attachments-container{
+  margin-top:14px;display:flex;flex-direction:column;gap:8px;
+  width:100%;flex-shrink:0;padding-bottom:50px;clear:both;
+}
+.attachment-row{
+  display:inline-flex;align-items:center;gap:10px;padding:7px 12px;
+  border-radius:14px;background:var(--hover-bg);width:fit-content;max-width:100%;
+  transition:background-color .18s var(--ease-soft),transform .25s var(--ease-bounce);
+}
+.attachment-row:active{transform:scale(.97)}
+.attach-download-btn{
+  width:34px;height:34px;border-radius:50%;border:none;background:var(--primary);
+  color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;
+  transition:transform .22s var(--ease-bounce),background-color .18s var(--ease-soft);
+}
+.attach-download-btn:active{transform:scale(.82)}
+.attach-name-label{
+  font-size:14.5px;font-weight:500;color:var(--text-main);white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;max-width:calc(100vw - 180px);cursor:pointer;
+}
+.attach-action-icon-btn{
+  width:30px;height:30px;border-radius:50%;border:none;background:transparent;
+  color:var(--text-secondary);display:inline-flex;align-items:center;justify-content:center;
+  cursor:pointer;flex-shrink:0;transition:background-color .18s var(--ease-soft),color .18s var(--ease-soft),transform .18s var(--ease-bounce);
+}
+.attach-action-icon-btn:active{background:var(--hover-bg);color:var(--primary);transform:scale(.85)}
+.attach-delete-btn:hover{background:var(--danger-bg);color:var(--danger)}
+.confirm-btn-primary{
+  background:var(--primary);color:#fff;border:none;font-weight:600;
+  font-size:14px;padding:9px 20px;border-radius:22px;cursor:pointer;
+  transition:background-color .18s var(--ease-soft),transform .25s var(--ease-bounce),box-shadow .18s var(--ease-soft);
+  box-shadow:0 4px 14px rgba(0,90,193,.26);white-space:nowrap;
+}
+.confirm-btn-primary:hover{box-shadow:0 6px 20px rgba(0,90,193,.36)}
+.confirm-btn-primary:active{transform:scale(.9)}
+.btn-secondary{
+  background:transparent;color:var(--text-secondary);border:1px solid var(--border-color);
+  font-weight:500;font-size:14px;padding:9px 18px;border-radius:24px;cursor:pointer;
+  transition:background-color .18s var(--ease-soft),color .18s var(--ease-soft),transform .25s var(--ease-bounce);
+}
+.btn-secondary:active{transform:scale(.92)}
+.custom-attach-sheet-backdrop,.file-name-modal-overlay,.modal-overlay{
+  position:fixed;inset:0;background:rgba(10,14,22,.55);
+  display:flex;opacity:0;pointer-events:none;
+  transition:opacity .22s var(--ease-soft);
+  backdrop-filter:blur(0px);-webkit-backdrop-filter:blur(0px);
+}
+.custom-attach-sheet-backdrop.active,.file-name-modal-overlay.active,.modal-overlay.active{
+  opacity:1;pointer-events:auto;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
+}
+.custom-attach-sheet-backdrop{z-index:2500;align-items:flex-end;justify-content:center;padding:0 12px 14px}
+.custom-attach-sheet{
+  width:100%;max-width:440px;background:var(--card-bg);border:1px solid var(--border-color);
+  border-radius:var(--radius-lg);box-shadow:var(--shadow-pop);padding:16px 18px 18px;
+  transform:translate3d(0,60px,0) scale(.94);opacity:0;
+  transition:transform .35s var(--ease-out-expo),opacity .22s var(--ease-soft);
+}
+.custom-attach-sheet-backdrop.active .custom-attach-sheet{transform:translate3d(0,0,0) scale(1);opacity:1}
+.sheet-pill-bar{width:38px;height:4px;border-radius:99px;background:var(--text-muted);opacity:.35;margin:0 auto 14px}
+.sheet-title{font-size:17px;font-weight:700;color:var(--text-main);text-align:center;margin-bottom:14px}
+.sheet-option-list{display:flex;flex-direction:column;gap:6px}
+.sheet-option-btn{
+  display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:16px;
+  border:none;background:transparent;color:var(--text-main);font-family:inherit;
+  font-size:15px;font-weight:500;cursor:pointer;text-align:left;
+  transition:background-color .18s var(--ease-soft),transform .25s var(--ease-bounce);
+}
+.sheet-option-btn:active{background-color:var(--hover-bg);transform:scale(.97)}
+.sheet-option-icon{
+  width:42px;height:42px;border-radius:14px;background:var(--hover-bg);
+  display:inline-flex;align-items:center;justify-content:center;font-size:21px;color:var(--primary);flex-shrink:0;
+}
+.sheet-option-info{flex:1}
+.sheet-option-desc{font-size:12.5px;color:var(--text-muted);margin-top:2px}
+.sheet-cancel-btn{
+  margin-top:10px;width:100%;height:46px;border-radius:23px;
+  border:1px solid var(--border-color);background:transparent;
+  color:var(--text-secondary);font-weight:600;font-size:15px;cursor:pointer;
+  transition:background-color .18s var(--ease-soft),transform .25s var(--ease-bounce);
+}
+.sheet-cancel-btn:active{background:var(--hover-bg);transform:scale(.97)}
+.file-name-modal-overlay{z-index:3200;align-items:center;justify-content:center;padding:16px}
+.file-name-modal-card{
+  width:100%;max-width:390px;background:var(--card-bg);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-pop);padding:24px 20px;
+  transform:translate3d(0,28px,0) scale(.94);opacity:0;
+  transition:transform .35s var(--ease-out-expo),opacity .22s var(--ease-soft);
+}
+.file-name-modal-overlay.active .file-name-modal-card{transform:translate3d(0,0,0) scale(1);opacity:1}
+.fn-modal-title{font-size:18px;font-weight:700;color:var(--text-main);margin-bottom:6px;text-align:center}
+.fn-modal-subtitle{font-size:13.5px;color:var(--text-muted);text-align:center;margin-bottom:18px}
+.fn-input-wrap{position:relative;margin-bottom:8px}
+.fn-input{
+  width:100%;border:1.5px solid var(--border-color);background:var(--hover-bg);
+  border-radius:16px;padding:12px 14px;font-family:inherit;font-size:15px;
+  color:var(--text-main);outline:none;
+  transition:border-color .2s var(--ease-soft),background-color .2s var(--ease-soft),box-shadow .2s var(--ease-soft);
+}
+.fn-input:focus{background:var(--card-bg);border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-light)}
+.fn-counter{text-align:right;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-muted);margin-bottom:18px;padding-right:4px}
+.fn-actions{display:flex;gap:10px;justify-content:flex-end}
+.fn-actions button{flex:1}
+.settings-view{max-width:600px;margin:8px auto 0}
+.settings-clean-card{
+  background:var(--card-bg);border:1px solid var(--border-color);
+  border-radius:var(--radius-md);box-shadow:var(--shadow-card);overflow:hidden;
+  transition:background-color .25s var(--ease-soft),border-color .25s var(--ease-soft);
+}
+.settings-clean-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 18px;border-bottom:1px solid var(--border-color);gap:16px;
+  cursor:pointer;transition:background-color .18s var(--ease-soft);
+}
+.settings-clean-row:active{background-color:var(--hover-bg)}
+.settings-clean-row:last-child{border-bottom:none}
+.settings-clean-title{font-size:15px;font-weight:500;color:var(--text-main)}
+.settings-clean-desc{font-size:12.5px;color:var(--text-muted);margin-top:3px}
+.theme-block{padding:14px 16px 18px;border-bottom:1px solid var(--border-color)}
+.theme-block-title{font-size:14.5px;font-weight:600;color:var(--text-main);margin-bottom:3px}
+.theme-block-desc{font-size:11.5px;color:var(--text-muted);margin-bottom:12px}
+
+.theme-section-label{
+  font-size:9px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
+  color:var(--text-muted);margin:10px 2px 8px;
+}
+.theme-section-label:first-of-type{margin-top:0}
+.theme-swatches{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,38px);
+  gap:8px;
+  justify-content:start;
+  padding:2px 0;
+}
+.theme-swatch{
+  width:38px;height:38px;border-radius:50%;border:none;
+  background:var(--sw-bg);cursor:pointer;padding:0;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.1);
+  transition:transform .16s var(--ease-bounce),box-shadow .2s var(--ease-soft);
+  -webkit-tap-highlight-color:transparent;
+}
+.theme-swatch::after{
+  content:'';width:14px;height:14px;border-radius:50%;
+  background:var(--sw-accent);box-shadow:0 1px 2px rgba(0,0,0,.18);
+}
+.theme-swatch.active{
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.1),0 0 0 2px var(--card-bg),0 0 0 4px var(--primary);
+}
+.theme-swatch:active{transform:scale(.85)}
+.toggle-switch{
+  position:relative;width:46px;height:26px;background:var(--border-color);
+  border-radius:13px;cursor:pointer;flex-shrink:0;
+  transition:background-color .25s var(--ease-soft);
+}
+.toggle-switch.active{background:var(--primary)}
+.toggle-knob{
+  position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;
+  background:#fff;box-shadow:0 2px 5px rgba(0,0,0,.22);
+  transition:transform .25s var(--ease-bounce);
+}
+.toggle-switch.active .toggle-knob{transform:translate3d(20px,0,0)}
+.settings-simple-footer{
+  text-align:center;margin-top:36px;color:var(--text-muted);font-size:13px;line-height:1.6;
+}
+.settings-simple-footer .version-tag{font-size:12px;font-family:'JetBrains Mono',monospace;opacity:.8}
+#confirmModal{z-index:3500}
+.modal-overlay{align-items:center;justify-content:center;padding:14px}
+.confirm-modal-box{
+  width:100%;max-width:380px;background:var(--card-bg);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-pop);text-align:center;padding:26px 20px;
+  transform:translate3d(0,24px,0) scale(.94);opacity:0;
+  transition:transform .32s var(--ease-out-expo),opacity .22s var(--ease-soft);
+}
+.modal-overlay.active .confirm-modal-box{transform:translate3d(0,0,0) scale(1);opacity:1}
+.confirm-icon-wrap{
+  width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  margin:0 auto 16px;
+}
+.confirm-icon-wrap.danger{background:var(--danger-bg);color:var(--danger)}
+.confirm-icon-wrap.primary{background:var(--primary-light);color:var(--primary)}
+.confirm-icon-wrap svg{width:28px;height:28px;fill:currentColor}
+.confirm-title{font-size:18.5px;font-weight:700;margin-bottom:6px;color:var(--text-main)}
+.confirm-text{font-size:14.5px;color:var(--text-secondary);line-height:1.5;margin-bottom:22px;word-break:break-word;white-space:pre-line}
+.confirm-actions{display:flex;gap:10px;justify-content:center}
+.confirm-action-btn{
+  color:#fff;border:none;font-weight:600;padding:10px 22px;border-radius:22px;cursor:pointer;
+  transition:background-color .18s var(--ease-soft),transform .25s var(--ease-bounce);
+}
+.confirm-action-btn.danger{background:var(--danger)}
+.confirm-action-btn.danger:active{transform:scale(.9);background-color:var(--danger-hover)}
+.confirm-action-btn.primary{background:var(--primary)}
+.confirm-action-btn.primary:active{transform:scale(.9);background-color:var(--primary-hover)}
+.toast{
+  position:fixed;bottom:24px;left:50%;transform:translate3d(-50%,20px,0) scale(.92);
+  background:#191c20;color:#fff;padding:12px 24px;border-radius:28px;
+  font-size:14px;font-weight:500;box-shadow:var(--shadow-pop);
+  display:inline-flex;align-items:center;justify-content:center;
+  text-align:center;max-width:calc(100vw - 32px);z-index:4000;
+  opacity:0;pointer-events:none;
+  transition:transform .32s var(--ease-bounce),opacity .22s var(--ease-soft);
+}
+body[data-theme="charcoal"] .toast,body[data-theme="midnight"] .toast,
+body[data-theme="forest"] .toast,body[data-theme="wine"] .toast,
+body[data-theme="cocoa"] .toast,body[data-theme="nord"] .toast,
+body[data-theme="sunset"] .toast,body[data-theme="graphite"] .toast,
+body[data-theme="indigo"] .toast,body[data-theme="deep-ocean"] .toast,
+body[data-theme="burgundy"] .toast,body[data-theme="plum"] .toast{background:#2b2e38;color:#fff;border:1px solid rgba(255,255,255,.1)}
+.toast.visible{opacity:1;pointer-events:auto;transform:translate3d(-50%,0,0) scale(1)}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+@media (min-width:600px){
+  :root{--header-height:64px}
+  main{padding:20px 24px 110px}
+  .fs-body{padding:20px 24px 150px}
+  .fab-btn{bottom:32px;right:32px}
+}
+@media (min-width:900px){.fs-body{max-width:780px}}
+
+.tools-menu-wrap{position:relative;display:inline-block}
+.tools-dropdown{
+  position:absolute;top:calc(100% + 8px);right:0;
+  width:230px;background:var(--card-bg);
+  border:1px solid var(--border-color);border-radius:18px;
+  box-shadow:0 12px 32px rgba(0,0,0,.18);
+  padding:12px;z-index:1500;
+  opacity:0;visibility:hidden;transform:translateY(-8px) scale(.96);
+  transform-origin:top right;
+  transition:opacity .2s var(--ease-soft),visibility .2s,transform .3s var(--ease-out-expo);
+}
+.tools-dropdown.open{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+.tools-dropdown-title{
+  font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
+  color:var(--text-muted);margin:6px 4px 8px;
+}
+.tools-dropdown-title:first-child{margin-top:0}
+.tools-format-row{display:flex;gap:6px;justify-content:space-between;margin-bottom:10px}
+.tools-format-row .format-btn{flex:1;width:auto}
+.format-btn{
+  width:40px;height:40px;border-radius:12px;
+  border:1.5px solid var(--border-color);background:var(--card-bg);
+  color:var(--text-main);font-size:15px;font-weight:700;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;
+  transition:background-color .18s var(--ease-soft),color .18s var(--ease-soft),border-color .18s var(--ease-soft),transform .22s var(--ease-bounce),box-shadow .18s var(--ease-soft);
+}
+.format-btn:active{transform:scale(.9)}
+.format-btn.active{
+  background:var(--primary);color:#fff;border-color:var(--primary);
+  box-shadow:0 4px 14px rgba(0,90,193,.42);
+}
+.tools-action-btn{
+  width:100%;display:flex;align-items:center;gap:8px;
+  padding:10px 12px;border-radius:12px;border:none;background:transparent;
+  color:var(--text-main);font-family:inherit;font-size:14px;font-weight:500;
+  cursor:pointer;text-align:left;transition:background-color .18s var(--ease-soft),transform .25s var(--ease-bounce);
+}
+.tools-action-btn:active{background:var(--hover-bg);transform:scale(.97)}
+.tools-menu-wrap .icon-btn.rotated svg{transform:rotate(180deg)}
+.tools-menu-wrap .icon-btn svg{transition:transform .3s var(--ease-bounce)}
+</style>
+</head>
+<body data-theme="light">
+
+<header>
+  <div class="header-left">
+    <button class="icon-btn" id="menuToggleBtn" title="Меню">
+      <svg width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+    </button>
+  </div>
+  <div class="header-center">
+    <div class="header-search" id="headerSearchWrap">
+      <span class="search-icon"><svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></span>
+      <input type="text" id="searchInput" placeholder="Поиск по заметкам..." autocomplete="off">
+      <button class="search-clear-btn" id="searchClearBtn" title="Очистить">✕</button>
+    </div>
+  </div>
+  <div class="header-right-spacer"></div>
+</header>
+
+<div class="app-body">
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+  <aside id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-brand-title" id="sidebarBrandTitle">@RomanCriminal • Notebook</div>
+    </div>
+    <div class="nav-item active" data-view="notes" id="navNotes">
+      <svg width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></svg>
+      <span>Заметки</span>
+    </div>
+    <div class="nav-item" data-view="archive" id="navArchive">
+      <svg width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M20.54 5.23l-1.39-1.68C18.88 3.21 18.47 3 18 3H6c-.47 0-.88.21-1.16.55L3.46 5.23C3.17 5.57 3 6.02 3 6.5V19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6.5c0-.48-.17-.93-.46-1.27zM12 17.5L6.5 12H10v-2h4v2h3.5L12 17.5zM5.12 5l.81-1h12l.94 1H5.12z"/></svg>
+      <span>Архив</span>
+    </div>
+    <div class="nav-item" data-view="trash" id="navTrash">
+      <svg width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M15 4V3H9v1H4v2h1v13c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6h1V4h-5zm2 15H7V6h10v13zm-7-2h2V8H9v9zm4 0h2V8h-2v9z"/></svg>
+      <span>Недавно удаленные</span>
+    </div>
+    <div class="nav-item" data-view="settings" id="navSettings">
+      <svg width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.57 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+      <span>Настройки</span>
+    </div>
+  </aside>
+
+  <main>
+    <div id="notesViewSection">
+      <div id="pinnedSection" style="display:none;">
+        <div class="section-label">Закрепленные</div>
+        <div class="notes-container" id="pinnedContainer"></div>
+      </div>
+      <div id="othersSection">
+        <div class="section-label" id="othersLabel" style="display:none;">Заметки</div>
+        <div class="notes-container" id="othersContainer"></div>
+      </div>
+    </div>
+
+    <div class="settings-view" id="settingsSection" style="display:none;">
+      <div class="settings-clean-card">
+        <div class="theme-block">
+          <div class="theme-block-title">Тема оформления</div>
+          <div class="theme-block-desc">12 светлых и 12 тёмных тем</div>
+          <div class="theme-section-label">Светлые</div>
+          <div class="theme-swatches" id="lightThemeGrid"></div>
+          <div class="theme-section-label">Тёмные</div>
+          <div class="theme-swatches" id="darkThemeGrid"></div>
+        </div>
+        <div class="settings-clean-row" id="linksClickableRow">
+          <div>
+            <div class="settings-clean-title">Кликабельные ссылки</div>
+            <div class="settings-clean-desc">Ссылки в заметках выделяются цветом</div>
+          </div>
+          <div class="toggle-switch active" id="linksClickableToggle"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="settings-clean-row" id="linkConfirmRow">
+          <div>
+            <div class="settings-clean-title">Спрашивать о переходе</div>
+            <div class="settings-clean-desc">Подтверждать перед открытием ссылки</div>
+          </div>
+          <div class="toggle-switch active" id="linkConfirmToggle"><div class="toggle-knob"></div></div>
+        </div>
+      </div>
+      <div class="settings-simple-footer">
+        <div>@RomanCriminal • Notebook</div>
+        <div class="version-tag">Версия V1.2</div>
+      </div>
+    </div>
+
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <div class="empty-state-icon">
+        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h10v2H7zm0-3h10v2H7zm0 6h7v2H7z"/></svg>
+      </div>
+      <p id="emptyStateText">Здесь пока нет заметок</p>
+    </div>
+  </main>
+
+  <button class="fab-btn" id="fabAddBtn" title="Создать заметку">
+    <svg width="28" height="28" viewBox="0 0 24 24"><path fill="currentColor" d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+  </button>
+</div>
+
+<div class="fullscreen-creator-overlay" id="fullscreenCreator">
+  <div class="fs-header">
+    <div class="fs-header-left">
+      <button class="icon-btn" id="fsCreatorBackBtn" title="Назад и сохранить">
+        <svg width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+      </button>
+      <span class="fs-header-title" id="fsHeaderTitle">Заметка</span>
+    </div>
+    <div class="fs-header-actions">
+      <button class="icon-btn" id="editorPinBtn" title="Закрепить" style="display:none;">
+        <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M17 4v2l-1 1v5l2 3v1h-7v6h-2v-6H2v-1l2-3V7L3 6V4h14z"/></svg>
+      </button>
+      <button class="icon-btn" id="editorArchiveBtn" title="В архив" style="display:none;">
+        <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M20.54 5.23l-1.39-1.68C18.88 3.21 18.47 3 18 3H6c-.47 0-.88.21-1.16.55L3.46 5.23C3.17 5.57 3 6.02 3 6.5V19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6.5c0-.48-.17-.93-.46-1.27zM12 17.5L6.5 12H10v-2h4v2h3.5L12 17.5zM5.12 5l.81-1h12l.94 1H5.12z"/></svg>
+      </button>
+      <button class="icon-btn" id="editorDeleteBtn" title="Удалить" style="display:none;">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M15 4V3H9v1H4v2h1v13c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6h1V4h-5zm2 15H7V6h10v13zm-7-2h2V8H9v9zm4 0h2V8h-2v9z"/></svg>
+      </button>
+      <button class="icon-btn" id="trashRestoreBtn" title="Восстановить" style="display:none;">
+        <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M14 12c0-1.1-.9-2-2-2s-2 .9-2 2 .9 2 2 2 2-.9 2-2zm-2-9a9 9 0 0 0-9 9H0l4 4 4-4H5c0-3.87 3.13-7 7-7 3.87 0 7 3.13 7 7s-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0 0 12 21a9 9 0 0 0 0-18z"/></svg>
+      </button>
+      <button class="icon-btn" id="trashDeleteForeverBtn" title="Удалить навсегда" style="display:none;">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#ba1a1a" d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+      </button>
+
+      <div class="tools-menu-wrap" id="toolsMenuWrap">
+        <button class="icon-btn" id="toolsToggleBtn" title="Инструменты">
+          <svg width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/></svg>
+        </button>
+        <div class="tools-dropdown" id="toolsDropdown">
+          <div class="tools-dropdown-title">Форматирование</div>
+          <div class="tools-format-row">
+            <button class="format-btn" type="button" data-cmd="bold" title="Жирный"><b>B</b></button>
+            <button class="format-btn" type="button" data-cmd="italic" title="Курсив"><i>I</i></button>
+            <button class="format-btn" type="button" data-cmd="underline" title="Подчеркивание"><u>U</u></button>
+            <button class="format-btn" type="button" data-cmd="strikeThrough" title="Зачеркивание"><s>S</s></button>
+          </div>
+          <div class="tools-dropdown-title">Действия</div>
+          <button class="tools-action-btn" type="button" id="toolsAttachBtn">
+            <span>📎 Прикрепить файл</span>
+          </button>
+        </div>
+      </div>
+
+      <button class="confirm-btn-primary" id="creatorSaveBtn">Готово</button>
+    </div>
+  </div>
+
+  <div class="fs-body" id="creatorScrollBody">
+    <div class="note-meta-block" id="noteMetaBlock">
+      <div class="title-row">
+        <div class="fs-title-box" id="creatorTitle" contenteditable="true" placeholder="Заголовок" autocomplete="off" autocorrect="off" autocapitalize="sentences" spellcheck="false"></div>
+        <div class="title-counter-badge" id="titleCounter">0/50</div>
+      </div>
+      <div class="note-meta-line" id="noteMeta">--:-- --.--.-- | 0 символов | 0 файлов</div>
+    </div>
+    <div class="note-editor-flow" id="noteEditorFlow">
+      <div class="fs-rich-editor" id="creatorText" contenteditable="true" placeholder="Заметка..." autocomplete="off" autocorrect="off" autocapitalize="sentences" spellcheck="false"></div>
+      <div class="attachments-container" id="attachmentsContainer"></div>
+    </div>
+  </div>
+</div>
+
+<input type="file" id="hiddenGalleryInput" accept="image/*,video/*" style="display:none">
+<input type="file" id="hiddenFileInput" style="display:none">
+
+<div class="custom-attach-sheet-backdrop" id="attachSourceMenu">
+  <div class="custom-attach-sheet">
+    <div class="sheet-pill-bar"></div>
+    <div class="sheet-title">Прикрепить к заметке</div>
+    <div class="sheet-option-list">
+      <button class="sheet-option-btn" id="optGalleryBtn">
+        <div class="sheet-option-icon">🖼️</div>
+        <div class="sheet-option-info"><div>Галерея</div><div class="sheet-option-desc">Выбрать фото или видео</div></div>
+      </button>
+      <button class="sheet-option-btn" id="optFileBtn">
+        <div class="sheet-option-icon">📁</div>
+        <div class="sheet-option-info"><div>Файлы</div><div class="sheet-option-desc">Выбрать документ или файл</div></div>
+      </button>
+    </div>
+    <button class="sheet-cancel-btn" id="closeAttachMenuBtn">Отмена</button>
+  </div>
+</div>
+
+<div class="file-name-modal-overlay" id="fileNameModalOverlay">
+  <div class="file-name-modal-card">
+    <div class="fn-modal-title" id="fnModalTitle">Как назвать файл?</div>
+    <div class="fn-modal-subtitle">Укажите название (максимум 50 символов)</div>
+    <div class="fn-input-wrap"><input type="text" class="fn-input" id="fnNameInput" maxlength="50" placeholder="Введите название..." autocomplete="off"></div>
+    <div class="fn-counter" id="fnNameCounter">0/50</div>
+    <div class="fn-actions">
+      <button class="btn-secondary" id="fnSkipBtn">Пропустить</button>
+      <button class="confirm-btn-primary" id="fnDoneBtn">Готово</button>
+    </div>
+  </div>
+</div>
+
+<div class="file-name-modal-overlay" id="renameModalOverlay">
+  <div class="file-name-modal-card">
+    <div class="fn-modal-title">Изменить название</div>
+    <div class="fn-modal-subtitle">Новое имя файла (макс. 50 символов)</div>
+    <div class="fn-input-wrap"><input type="text" class="fn-input" id="renameInput" maxlength="50" placeholder="Новое название..." autocomplete="off"></div>
+    <div class="fn-counter" id="renameCounter">0/50</div>
+    <div class="fn-actions">
+      <button class="btn-secondary" id="renameCancelBtn">Отмена</button>
+      <button class="confirm-btn-primary" id="renameSaveBtn">Сохранить</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="confirmModal">
+  <div class="confirm-modal-box">
+    <div class="confirm-icon-wrap" id="confirmIcon">
+      <svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+    </div>
+    <div class="confirm-title" id="confirmTitle">Точно?</div>
+    <div class="confirm-text" id="confirmMessage">Подтвердите действие.</div>
+    <div class="confirm-actions">
+      <button class="btn-secondary" id="confirmCancelBtn">Отмена</button>
+      <button class="confirm-action-btn" id="confirmProceedBtn">Подтвердить</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+'use strict';
+(() => {
+  const $ = id => document.getElementById(id);
+
+  const THEMES = [
+    {id:'light',   label:'Белая',      group:'light', bg:'#f7f9fd', card:'#ffffff', accent:'#005ac1'},
+    {id:'cream',   label:'Крем',       group:'light', bg:'#faf6ee', card:'#fffdf7', accent:'#a06a1e'},
+    {id:'sand',    label:'Песок',      group:'light', bg:'#f8f3e8', card:'#fffcf3', accent:'#b8860b'},
+    {id:'lemon',   label:'Лимон',      group:'light', bg:'#fdfbe8', card:'#fffef7', accent:'#b8a419'},
+    {id:'peach',   label:'Персик',     group:'light', bg:'#fff3ea', card:'#fffbf6', accent:'#d2691e'},
+    {id:'coral',   label:'Коралл',     group:'light', bg:'#fef1ed', card:'#ffffff', accent:'#e05a3a'},
+    {id:'rose',    label:'Роза',       group:'light', bg:'#fdf1f5', card:'#ffffff', accent:'#c03a68'},
+    {id:'lavender',label:'Лаванда',    group:'light', bg:'#f4f0fc', card:'#ffffff', accent:'#6d3fc4'},
+    {id:'lilac',   label:'Сирень',     group:'light', bg:'#f8f1fa', card:'#ffffff', accent:'#9c4fc4'},
+    {id:'sky',     label:'Небо',       group:'light', bg:'#eef6fd', card:'#ffffff', accent:'#1a6fc0'},
+    {id:'ocean',   label:'Океан',      group:'light', bg:'#e8f6f7', card:'#ffffff', accent:'#0e7c86'},
+    {id:'mint',    label:'Мята',       group:'light', bg:'#eefaf3', card:'#ffffff', accent:'#1a7a4a'},
+    {id:'charcoal',   label:'Уголь',   group:'dark', bg:'#121316', card:'#1c1d22', accent:'#3b82f6'},
+    {id:'graphite',   label:'Графит',  group:'dark', bg:'#1a1b1e', card:'#242629', accent:'#a8aab0'},
+    {id:'midnight',   label:'Полночь', group:'dark', bg:'#0a0f1c', card:'#131a2b', accent:'#5b8def'},
+    {id:'indigo',     label:'Индиго',  group:'dark', bg:'#0e1024', card:'#191c38', accent:'#7c7ce8'},
+    {id:'nord',       label:'Норд',    group:'dark', bg:'#1b2230', card:'#252d3d', accent:'#88c0d0'},
+    {id:'deep-ocean', label:'Глубина', group:'dark', bg:'#071820', card:'#0e2430', accent:'#2da8c4'},
+    {id:'forest',     label:'Лес',     group:'dark', bg:'#0e1a14', card:'#16261d', accent:'#4caf7d'},
+    {id:'wine',       label:'Вино',    group:'dark', bg:'#1a0d12', card:'#26151c', accent:'#d05a7a'},
+    {id:'burgundy',   label:'Бордо',   group:'dark', bg:'#1c0810', card:'#2a0f1a', accent:'#c4305c'},
+    {id:'cocoa',      label:'Какао',   group:'dark', bg:'#1a120c', card:'#241a12', accent:'#c08552'},
+    {id:'sunset',     label:'Закат',   group:'dark', bg:'#2a1420', card:'#381a2a', accent:'#f08cae'},
+    {id:'plum',       label:'Слива',   group:'dark', bg:'#160f1e', card:'#20162c', accent:'#b87ee8'}
+  ];
+
+  const DB_NAME='RomanCriminal_Noties_DB_v26';
+  const STORE_NAME='noties';
+  let db=null;
+
+  const state={
+    notes:[],currentView:'notes',editingNoteId:null,searchQuery:'',
+    pendingActionOnConfirm:null,theme:'light',linksClickable:true,
+    askLinkConfirm:true,lastFocusedEditor:null,viewerMode:false
+  };
+
+  try{
+    const t=localStorage.getItem('rc_theme');
+    if(t&&THEMES.some(x=>x.id===t))state.theme=t;
+    state.linksClickable=localStorage.getItem('rc_links_clickable')!=='false';
+    state.askLinkConfirm=localStorage.getItem('rc_ask_link')!=='false';
+  }catch(e){}
+
+  function initDB(){
+    return new Promise(resolve=>{
+      try{
+        const req=indexedDB.open(DB_NAME,1);
+        req.onupgradeneeded=e=>{
+          const d=e.target.result;
+          if(!d.objectStoreNames.contains(STORE_NAME))d.createObjectStore(STORE_NAME,{keyPath:'id'});
+        };
+        req.onsuccess=e=>{db=e.target.result;resolve(db)};
+        req.onerror=()=>resolve(null);
+      }catch(e){resolve(null)}
+    });
+  }
+  async function dbGetAllNotes(){
+    if(!db){try{const l=localStorage.getItem(DB_NAME);return l?JSON.parse(l):[]}catch(e){return[]}}
+    return new Promise(resolve=>{
+      try{
+        const tx=db.transaction(STORE_NAME,'readonly');
+        const rq=tx.objectStore(STORE_NAME).getAll();
+        rq.onsuccess=()=>resolve(rq.result||[]);
+        rq.onerror=()=>resolve([]);
+      }catch(e){resolve([])}
+    });
+  }
+  async function dbSaveNote(note){
+    if(!db){
+      try{
+        const all=JSON.parse(localStorage.getItem(DB_NAME)||'[]');
+        const i=all.findIndex(n=>n.id===note.id);
+        if(i>=0)all[i]=note;else all.unshift(note);
+        localStorage.setItem(DB_NAME,JSON.stringify(all));
+      }catch(e){}
+      return;
+    }
+    return new Promise(resolve=>{
+      try{
+        const tx=db.transaction(STORE_NAME,'readwrite');
+        tx.objectStore(STORE_NAME).put(note);
+        tx.oncomplete=()=>resolve();
+        tx.onerror=()=>resolve();
+      }catch(e){resolve()}
+    });
+  }
+  async function dbDeleteNote(id){
+    if(!db){
+      try{
+        let all=JSON.parse(localStorage.getItem(DB_NAME)||'[]');
+        all=all.filter(n=>n.id!==id);
+        localStorage.setItem(DB_NAME,JSON.stringify(all));
+      }catch(e){}
+      return;
+    }
+    return new Promise(resolve=>{
+      try{
+        const tx=db.transaction(STORE_NAME,'readwrite');
+        tx.objectStore(STORE_NAME).delete(id);
+        tx.oncomplete=()=>resolve();
+        tx.onerror=()=>resolve();
+      }catch(e){resolve()}
+    });
+  }
+
+  const lightThemeGrid=$('lightThemeGrid');
+  const darkThemeGrid=$('darkThemeGrid');
+
+  function renderThemeGrids(){
+    lightThemeGrid.innerHTML='';
+    darkThemeGrid.innerHTML='';
+    const fragL=document.createDocumentFragment();
+    const fragD=document.createDocumentFragment();
+    THEMES.forEach(t=>{
+      const b=document.createElement('button');
+      b.type='button';
+      b.className='theme-swatch'+(state.theme===t.id?' active':'');
+      b.dataset.themeId=t.id;
+      b.title=t.label;
+      b.setAttribute('aria-label',t.label);
+      b.style.setProperty('--sw-bg',t.bg);
+      b.style.setProperty('--sw-accent',t.accent);
+      if(t.group==='dark')fragD.appendChild(b);else fragL.appendChild(b);
+    });
+    lightThemeGrid.appendChild(fragL);
+    darkThemeGrid.appendChild(fragD);
+  }
+
+  function handleThemeGridClick(e){
+    const b=e.target.closest('.theme-swatch');
+    if(!b)return;
+    if(b.dataset.themeId!==state.theme)setTheme(b.dataset.themeId);
+  }
+  lightThemeGrid.addEventListener('click',handleThemeGridClick);
+  darkThemeGrid.addEventListener('click',handleThemeGridClick);
+
+  function updateThemeActive(){
+    document.querySelectorAll('.theme-swatch').forEach(c=>{
+      c.classList.toggle('active',c.dataset.themeId===state.theme);
+    });
+  }
+
+  function setTheme(id){
+    if(!THEMES.some(t=>t.id===id))id='light';
+    state.theme=id;
+    try{localStorage.setItem('rc_theme',id)}catch(e){}
+    document.body.setAttribute('data-theme',id);
+    const m=document.querySelector('meta[name="theme-color"]');
+    const t=THEMES.find(x=>x.id===id);
+    if(m&&t)m.setAttribute('content',t.bg);
+    updateThemeActive();
+  }
+
+  function showToast(msg){
+    const t=$('toast');
+    if(!t)return;
+    t.textContent=msg;
+    t.classList.add('visible');
+    clearTimeout(window.__tt);
+    window.__tt=setTimeout(()=>t.classList.remove('visible'),2000);
+  }
+  function escapeHtml(s){
+    if(!s)return'';
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+  }
+  function countChars(v){return Array.from(String(v||'').replace(/[\u200B\uFEFF]/g,'')).length}
+  function pluralize(n,one,few,many){
+    const a=n%10,b=n%100;
+    if(a===1&&b!==11)return n+' '+one;
+    if(a>=2&&a<=4&&(b<12||b>14))return n+' '+few;
+    return n+' '+many;
+  }
+  function formatDate(ts){
+    const d=new Date(ts||Date.now());
+    const p=n=>String(n).padStart(2,'0');
+    return p(d.getHours())+':'+p(d.getMinutes())+' '+d.getDate()+'.'+p(d.getMonth()+1)+'.'+String(d.getFullYear()).slice(-2);
+  }
+  function sanitizeHTML(h){return h?h.replace(/\u200B/g,''):''}
+
+  const TLDs='com|ru|org|net|io|me|xyz|info|site|online|top|pro|biz|dev|app|cc|to|ua|by|kz|рф';
+  const URL_RE=new RegExp('(?:https?:\\/\\/[^\\s<]+|www\\.[^\\s<]+|(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+(?:'+TLDs+')(?:\\/[^\\s<]*)?)','gi');
+  function linkifyHTML(html){
+    if(!html)return'';
+    const tokens=html.split(/(<[^>]+>)/g);
+    let inA=false;const out=[];
+    for(let i=0;i<tokens.length;i++){
+      const tk=tokens[i];
+      if(tk.startsWith('<')){
+        const m=tk.match(/^<\s*(\/)?([a-zA-Z0-9]+)/);
+        if(m&&m[2].toLowerCase()==='a')inA=!Boolean(m[1]);
+        out.push(tk);
+      }else if(!inA){
+        out.push(tk.replace(URL_RE,full=>{
+          const sm=full.match(/^(.*?)([.,!?:;)]*)$/);
+          const url=sm?sm[1]:full;
+          const trail=sm?sm[2]:'';
+          const href=/^https?:\/\//i.test(url)?url:('https://'+url);
+          return '<a href="'+href+'" class="note-link" target="_blank" rel="noopener">'+url+'</a>'+trail;
+        }));
+      }else out.push(tk);
+    }
+    return out.join('');
+  }
+
+  function normalizeFormatting(html){
+    if(!html)return'';
+    const temp=document.createElement('div');
+    temp.innerHTML=html;
+    const map={strong:'b',em:'i',strike:'s',del:'s'};
+    Object.keys(map).forEach(from=>{
+      temp.querySelectorAll(from).forEach(el=>{
+        const n=document.createElement(map[from]);
+        while(el.firstChild)n.appendChild(el.firstChild);
+        el.parentNode.replaceChild(n,el);
+      });
+    });
+    temp.querySelectorAll('[style]').forEach(el=>{
+      const s=el.getAttribute('style')||'';
+      if(/font-weight\s*:\s*(bold|700|800|900)/i.test(s)){
+        const b=document.createElement('b');
+        while(el.firstChild)b.appendChild(el.firstChild);
+        el.parentNode.replaceChild(b,el);
+      }else if(/font-style\s*:\s*italic/i.test(s)){
+        const i=document.createElement('i');
+        while(el.firstChild)i.appendChild(el.firstChild);
+        el.parentNode.replaceChild(i,el);
+      }else if(/text-decoration[^;]*underline/i.test(s)){
+        const u=document.createElement('u');
+        while(el.firstChild)u.appendChild(el.firstChild);
+        el.parentNode.replaceChild(u,el);
+      }else if(/text-decoration[^;]*line-through/i.test(s)){
+        const sn=document.createElement('s');
+        while(el.firstChild)sn.appendChild(el.firstChild);
+        el.parentNode.replaceChild(sn,el);
+      }else if(el.tagName.toLowerCase()!=='a')el.removeAttribute('style');
+    });
+    return temp.innerHTML;
+  }
+
+  const creatorTitle=$('creatorTitle');
+  const creatorText=$('creatorText');
+  const titleCounter=$('titleCounter');
+  const noteMeta=$('noteMeta');
+  const attachmentsContainer=$('attachmentsContainer');
+  const creatorScrollBody=$('creatorScrollBody');
+  const fullscreenCreator=$('fullscreenCreator');
+
+  function updateTitleCounter(){
+    titleCounter.textContent=countChars(creatorTitle.textContent)+'/50';
+  }
+  function updateNoteMeta(ts){
+    const note=state.editingNoteId?state.notes.find(n=>n.id===state.editingNoteId):null;
+    const live=countChars(creatorText.textContent);
+    const saved=note&&Number.isFinite(note.bodyCharCount)?note.bodyCharCount:live;
+    const count=(document.activeElement===creatorText)?live:saved;
+    const time=ts||(note&&(note.updatedAt||note.createdAt))||Date.now();
+    const files=(note&&Array.isArray(note.attachments))?note.attachments.length:0;
+    noteMeta.textContent=formatDate(time)+' | '+pluralize(count,'символ','символа','символов')+' | '+pluralize(files,'файл','файла','файлов');
+  }
+  function updateAllCounters(){updateTitleCounter();updateNoteMeta()}
+
+  creatorTitle.addEventListener('keydown',e=>{
+    if(e.key==='Enter'){e.preventDefault();creatorText.focus();return}
+    if(e.ctrlKey||e.metaKey||e.altKey)return;
+    if(['Backspace','Delete','ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Tab','Escape','Home','End'].includes(e.key))return;
+    const sel=window.getSelection();
+    const sl=sel?sel.toString().length:0;
+    const cur=(creatorTitle.innerText||'').replace(/[\r\n]/g,'');
+    if(cur.length-sl>=50)e.preventDefault();
+  });
+  creatorTitle.addEventListener('paste',e=>{
+    e.preventDefault();
+    const p=(e.clipboardData||window.clipboardData).getData('text')||'';
+    const c=p.replace(/[\r\n]/g,' ');
+    const cur=(creatorTitle.innerText||'').replace(/[\r\n]/g,'');
+    const sel=window.getSelection();
+    const sl=sel?sel.toString().length:0;
+    const allowed=50-(cur.length-sl);
+    if(allowed<=0)return;
+    document.execCommand('insertText',false,c.slice(0,allowed));
+    updateTitleCounter();
+  });
+  creatorTitle.addEventListener('input',()=>{
+    let t=(creatorTitle.innerText||'').replace(/[\r\n]/g,'');
+    if(t.length>50){
+      creatorTitle.innerText=t.slice(0,50);
+      const r=document.createRange();const s=window.getSelection();
+      r.selectNodeContents(creatorTitle);r.collapse(false);
+      s.removeAllRanges();s.addRange(r);
+    }
+    updateAllCounters();
+  });
+  creatorText.addEventListener('input',()=>{updateNoteMeta();ensureCursorVisible()});
+  creatorText.addEventListener('keydown',e=>{if(e.key==='Enter')setTimeout(ensureCursorVisible,30)});
+
+  function setViewerMode(on){
+    state.viewerMode=on;
+    fullscreenCreator.classList.toggle('viewer-mode',on);
+    const note=state.editingNoteId?state.notes.find(n=>n.id===state.editingNoteId):null;
+    if(!(note&&note.isDeleted)){
+      creatorText.contentEditable=on?'false':'true';
+      creatorTitle.contentEditable=on?'false':'true';
+    }
+  }
+
+  function placeCaretAtEnd(el){
+    const r=document.createRange();
+    r.selectNodeContents(el);
+    r.collapse(false);
+    const s=window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+  }
+
+  creatorScrollBody.addEventListener('click',e=>{
+    if(e.target.closest('a.note-link')){
+      if(state.viewerMode&&state.linksClickable)return;
+    }
+    if(e.target.closest('button')||e.target.closest('.attachment-row'))return;
+    if(e.target.closest('#creatorTitle')||e.target.closest('.title-row')){
+      if(state.viewerMode)setViewerMode(false);
+      return;
+    }
+
+    const wasViewer = state.viewerMode;
+    if(wasViewer) setViewerMode(false);
+
+    const x = e.clientX, y = e.clientY;
+    let placed = false;
+
+    const textRect = creatorText.getBoundingClientRect();
+    const insideEditor =
+      x >= textRect.left && x <= textRect.right &&
+      y >= textRect.top && y <= textRect.bottom;
+
+    if(insideEditor){
+      if(document.caretRangeFromPoint){
+        const range = document.caretRangeFromPoint(x, y);
+        if(range && creatorText.contains(range.startContainer)){
+          const s = window.getSelection();
+          s.removeAllRanges();
+          s.addRange(range);
+          placed = true;
+        }
+      } else if(document.caretPositionFromPoint){
+        const pos = document.caretPositionFromPoint(x, y);
+        if(pos && creatorText.contains(pos.offsetNode)){
+          const range = document.createRange();
+          range.setStart(pos.offsetNode, pos.offset);
+          range.collapse(true);
+          const s = window.getSelection();
+          s.removeAllRanges();
+          s.addRange(range);
+          placed = true;
+        }
+      }
+    }
+
+    if(!placed){
+      if(document.activeElement !== creatorText){
+        creatorText.focus();
+      }
+      placeCaretAtEnd(creatorText);
+    } else {
+      creatorText.focus();
+    }
+  });
+
+  function getCaretRect(){
+    const s=window.getSelection();
+    if(!s||!s.rangeCount)return null;
+    const r=s.getRangeAt(0);
+    if(!creatorText.contains(r.commonAncestorContainer)&&!creatorTitle.contains(r.commonAncestorContainer))return null;
+    let rect=r.getBoundingClientRect();
+    if(rect&&rect.top>0&&rect.height>0)return rect;
+    try{
+      const m=document.createElement('span');
+      m.textContent='\u200B';
+      const c=r.cloneRange();
+      c.insertNode(m);
+      rect=m.getBoundingClientRect();
+      m.remove();
+      return rect;
+    }catch(e){return null}
+  }
+  function ensureCursorVisible(){
+    if(!fullscreenCreator.classList.contains('open'))return;
+    const caret=getCaretRect();
+    if(!caret||caret.top===0)return;
+    const header=document.querySelector('.fs-header');
+    if(!header)return;
+    const top=header.getBoundingClientRect().bottom+10;
+    const bottom=window.innerHeight-20;
+    if(caret.bottom>bottom)creatorScrollBody.scrollTop+=(caret.bottom-bottom);
+    else if(caret.top<top)creatorScrollBody.scrollTop-=(top-caret.top);
+  }
+
+  /* ============ TOOLS MENU ============ */
+  const toolsMenuWrap = $('toolsMenuWrap');
+  const toolsToggleBtn = $('toolsToggleBtn');
+  const toolsDropdown = $('toolsDropdown');
+
+  function toggleToolsMenu(){
+    const isOpen = toolsDropdown.classList.toggle('open');
+    toolsToggleBtn.classList.toggle('rotated', isOpen);
+  }
+  function closeToolsMenu(){
+    toolsDropdown.classList.remove('open');
+    toolsToggleBtn.classList.remove('rotated');
+  }
+
+  // Клавиатура не закрывается при открытии панели
+  if(toolsToggleBtn){
+    toolsToggleBtn.addEventListener('pointerdown', e => e.preventDefault());
+    toolsToggleBtn.addEventListener('mousedown', e => e.preventDefault());
+    toolsToggleBtn.addEventListener('click', e=>{
+      e.preventDefault(); e.stopPropagation();
+      toggleToolsMenu();
+    });
+  }
+
+  document.addEventListener('pointerdown', e => {
+    if(toolsMenuWrap && !toolsMenuWrap.contains(e.target)){
+      closeToolsMenu();
+    }
+  }, true);
+
+  /* ============ ФОРМАТИРОВАНИЕ (v2 — надёжное, независимое) ============ */
+  const FORMAT_TAGS = { bold:'b', italic:'i', underline:'u', strikeThrough:'s' };
+  const ALL_FORMAT_TAGS = ['b','i','u','s'];
+  let formatButtons = [];
+  let fmtRaf = null;
+  let lastEditorRange = null;
+
+  function cacheFormatButtons(){
+    formatButtons = Array.from(document.querySelectorAll('.format-btn[data-cmd]'));
+  }
+
+  function isInEditorNode(node){
+    if(!node) return false;
+    const el = node.nodeType === 1 ? node : node.parentNode;
+    if(!el) return false;
+    return creatorTitle.contains(el) || creatorText.contains(el) ||
+           el === creatorTitle || el === creatorText;
+  }
+
+  function findAncestorTag(node, tagName){
+    const upper = tagName.toUpperCase();
+    let n = node && node.nodeType === 1 ? node : (node ? node.parentNode : null);
+    while(n && n !== creatorTitle && n !== creatorText){
+      if(n.tagName === upper) return n;
+      n = n.parentNode;
+    }
+    return null;
+  }
+
+  function updateFormatStates(){
+    if(!formatButtons.length) return;
+    const sel = window.getSelection();
+    if(!sel || !sel.rangeCount){
+      formatButtons.forEach(b => b.classList.remove('active'));
+      return;
+    }
+    const r = sel.getRangeAt(0);
+    if(!isInEditorNode(r.commonAncestorContainer)){
+      formatButtons.forEach(b => b.classList.remove('active'));
+      return;
+    }
+    formatButtons.forEach(b=>{
+      let active = false;
+      const cmd = b.dataset.cmd;
+      try {
+        active = document.queryCommandState(cmd);
+      } catch(e){
+        const tagName = FORMAT_TAGS[cmd];
+        if(tagName){
+          const sTag = findAncestorTag(r.startContainer, tagName);
+          if(r.collapsed){
+            active = Boolean(sTag);
+          } else {
+            const eTag = findAncestorTag(r.endContainer, tagName);
+            active = Boolean(sTag && eTag);
+          }
+        }
+      }
+      b.classList.toggle('active', active);
+    });
+  }
+
+  function scheduleFormatUpdate(){
+    if(fmtRaf) return;
+    fmtRaf = requestAnimationFrame(()=>{
+      fmtRaf = null;
+      updateFormatStates();
+    });
+  }
+
+  function normalizeEditor(root){
+    if(!root) return;
+
+    // 1) Конвертируем inline-стили в семантические теги
+    Array.from(root.querySelectorAll('[style]')).forEach(el => {
+      if(el.tagName === 'A') return;
+      const s = (el.getAttribute('style') || '').toLowerCase();
+      let wrap = null;
+      if(/font-weight\s*:\s*(bold|700|800|900)/.test(s)) wrap = 'b';
+      else if(/font-style\s*:\s*italic/.test(s)) wrap = 'i';
+      else if(/text-decoration[^;]*line-through/.test(s)) wrap = 's';
+      else if(/text-decoration[^;]*underline/.test(s)) wrap = 'u';
+      if(wrap){
+        const w = document.createElement(wrap);
+        const p = el.parentNode;
+        if(p){
+          p.insertBefore(w, el);
+          w.appendChild(el);
+        }
+      }
+      el.removeAttribute('style');
+    });
+
+    // 2) Удаляем пустые теги (не трогаем те, что содержат ZWS-«якорь» или каретку)
+    const sel = window.getSelection();
+    const caretNode = (sel && sel.rangeCount) ? sel.getRangeAt(0).startContainer : null;
+    const caretEl = caretNode ? (caretNode.nodeType === 1 ? caretNode : caretNode.parentNode) : null;
+
+    ALL_FORMAT_TAGS.forEach(tag => {
+      Array.from(root.querySelectorAll(tag)).forEach(el => {
+        const text = el.textContent || '';
+        if(text.indexOf('\u200B') !== -1) return;
+        if(caretEl && (el === caretEl || el.contains(caretEl))) return;
+        if(!text.replace(/[\uFEFF]/g, '').trim()){
+          el.remove();
+        }
+      });
+    });
+
+    // 3) Сливаем соседние теги одного типа
+    ALL_FORMAT_TAGS.forEach(tag => {
+      let changed = true;
+      while(changed){
+        changed = false;
+        Array.from(root.querySelectorAll(tag)).forEach(el => {
+          let next = el.nextSibling;
+          while(next && next.nodeType === 3 && next.textContent.length === 0){
+            next = next.nextSibling;
+          }
+          if(next && next.nodeType === 1 && next.tagName === el.tagName){
+            while(next.firstChild) el.appendChild(next.firstChild);
+            next.remove();
+            changed = true;
+          }
+        });
+      }
+    });
+  }
+
+  function applyFormat(cmd){
+    if(!cmd) return;
+    const tagName = FORMAT_TAGS[cmd];
+    if(!tagName) return;
+
+    if(state.viewerMode) setViewerMode(false);
+
+    // 1) Определяем целевой редактор
+    let ed = null;
+    const activeEl = document.activeElement;
+    if(activeEl === creatorTitle || activeEl === creatorText) ed = activeEl;
+
+    if(!ed){
+      const sel0 = window.getSelection();
+      if(sel0 && sel0.rangeCount){
+        const anc = sel0.getRangeAt(0).commonAncestorContainer;
+        if(creatorTitle.contains(anc) || anc === creatorTitle) ed = creatorTitle;
+        else if(creatorText.contains(anc) || anc === creatorText) ed = creatorText;
+      }
+    }
+    if(!ed) ed = (state.lastFocusedEditor === creatorTitle) ? creatorTitle : creatorText;
+
+    // 2) Фокус (без скролла)
+    if(document.activeElement !== ed){
+      try { ed.focus({preventScroll:true}); } catch(e){ try{ ed.focus(); }catch(e2){} }
+    }
+
+    // 3) Если выделение потеряно — восстанавливаем из кэша
+    const sel = window.getSelection();
+    const hasValidSel = sel && sel.rangeCount && isInEditorNode(sel.getRangeAt(0).commonAncestorContainer);
+    if(!hasValidSel && lastEditorRange){
+      try {
+        sel.removeAllRanges();
+        sel.addRange(lastEditorRange);
+      } catch(e){}
+    }
+
+    // 4) Всегда принудительно тег-режим (не CSS-стили)
+    try { document.execCommand('styleWithCSS', false, false); } catch(e){}
+
+    // 5) Применяем команду
+    try { document.execCommand(cmd, false, null); } catch(e){}
+
+    // 6) Нормализация DOM: пустые теги, CSS-стили, склейка
+    normalizeEditor(ed);
+
+    // 7) Запоминаем редактор и обновляем UI
+    state.lastFocusedEditor = ed;
+
+    // Пересчитываем кэш выделения после операции
+    const selAfter = window.getSelection();
+    if(selAfter && selAfter.rangeCount && isInEditorNode(selAfter.getRangeAt(0).commonAncestorContainer)){
+      lastEditorRange = selAfter.getRangeAt(0).cloneRange();
+    }
+
+    scheduleFormatUpdate();
+    updateAllCounters();
+  }
+
+  function setupFormatToolbar(id, editors){
+    const tb = $(id); if(!tb) return;
+    cacheFormatButtons();
+
+    formatButtons.forEach(b=>{
+      // Кнопки формата не должны красть фокус у редактора —
+      // иначе закрывается клавиатура и теряется выделение
+      b.setAttribute('tabindex', '-1');
+      b.addEventListener('pointerdown', e => e.preventDefault());
+      b.addEventListener('mousedown', e => e.preventDefault());
+      b.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        applyFormat(b.dataset.cmd);
+      });
+    });
+
+    editors.forEach(ed=>{
+      ed.addEventListener('focus', ()=>{ state.lastFocusedEditor = ed; scheduleFormatUpdate(); });
+      ed.addEventListener('keyup', scheduleFormatUpdate);
+      ed.addEventListener('mouseup', scheduleFormatUpdate);
+      ed.addEventListener('touchend', scheduleFormatUpdate);
+      ed.addEventListener('input', scheduleFormatUpdate);
+    });
+
+    // Следим за выделением в редакторе — кэшируем последний валидный range
+    document.addEventListener('selectionchange', () => {
+      const sel = window.getSelection();
+      if(!sel || !sel.rangeCount) return;
+      const r = sel.getRangeAt(0);
+      if(isInEditorNode(r.commonAncestorContainer)){
+        lastEditorRange = r.cloneRange();
+      }
+      scheduleFormatUpdate();
+    });
+
+    updateFormatStates();
+  }
+
+  /* ============ ВЛОЖЕНИЯ ============ */
+  const attachSourceMenu=$('attachSourceMenu');
+  const fileNameModalOverlay=$('fileNameModalOverlay');
+  const renameModalOverlay=$('renameModalOverlay');
+  const fnNameInput=$('fnNameInput');
+  const fnNameCounter=$('fnNameCounter');
+  const renameInput=$('renameInput');
+  const renameCounter=$('renameCounter');
+  let pendingFile=null,pendingDataUrl='',pendingRenameId=null;
+
+  async function ensureActiveNoteCreated(){
+    if(state.editingNoteId){
+      const n=state.notes.find(x=>x.id===state.editingNoteId);
+      if(n){if(!Array.isArray(n.attachments))n.attachments=[];return n}
+    }
+    const tt=(creatorTitle.innerText||'').trim();
+    const bt=(creatorText.innerText||'').trim();
+    const n={
+      id:'note_'+Date.now()+'_'+Math.random().toString(36).slice(2,7),
+      title:sanitizeHTML(creatorTitle.innerHTML.trim())||'Без названия',
+      content:sanitizeHTML(creatorText.innerHTML.trim()),
+      isPinned:false,isArchived:false,isDeleted:false,deletedAt:null,
+      createdAt:Date.now(),updatedAt:Date.now(),
+      titleCharCount:countChars(tt),bodyCharCount:countChars(bt),attachments:[]
+    };
+    state.notes.unshift(n);
+    state.editingNoteId=n.id;
+    await dbSaveNote(n);
+    $('editorPinBtn').style.display='inline-flex';
+    $('editorArchiveBtn').style.display='inline-flex';
+    $('editorDeleteBtn').style.display='inline-flex';
+    return n;
+  }
+  function openAttachMenu(){attachSourceMenu.classList.add('active')}
+  function closeAttachMenu(){attachSourceMenu.classList.remove('active')}
+  $('closeAttachMenuBtn').onclick=closeAttachMenu;
+  attachSourceMenu.onclick=e=>{if(e.target===attachSourceMenu)closeAttachMenu()};
+  $('optGalleryBtn').onclick=()=>{closeAttachMenu();$('hiddenGalleryInput').click()};
+  $('optFileBtn').onclick=()=>{closeAttachMenu();$('hiddenFileInput').click()};
+
+  const toolsAttachBtn = $('toolsAttachBtn');
+  if(toolsAttachBtn){
+    toolsAttachBtn.onclick = e => {
+      e.preventDefault(); e.stopPropagation();
+      closeToolsMenu();
+      openAttachMenu();
+    };
+  }
+
+  function handleFile(file){
+    if(!file)return;
+    const rd=new FileReader();
+    rd.onload=ev=>{pendingFile=file;pendingDataUrl=ev.target.result;openFileNameModal(file)};
+    rd.readAsDataURL(file);
+  }
+  $('hiddenGalleryInput').onchange=e=>{handleFile(e.target.files?.[0]);e.target.value=''};
+  $('hiddenFileInput').onchange=e=>{handleFile(e.target.files?.[0]);e.target.value=''};
+
+  function openFileNameModal(file){
+    const isI=(file.type||'').startsWith('image/');
+    const isV=(file.type||'').startsWith('video/');
+    $('fnModalTitle').textContent=isI?'Как назвать фото?':(isV?'Как назвать видео?':'Как назвать файл?');
+    let n=file.name||(isI?'Фото':(isV?'Видео':'Файл'));
+    const d=n.lastIndexOf('.');
+    if(d>0)n=n.slice(0,d);
+    n=n.slice(0,50);
+    fnNameInput.value=n;
+    fnNameCounter.textContent=countChars(n)+'/50';
+    fileNameModalOverlay.classList.add('active');
+    setTimeout(()=>{fnNameInput.focus();fnNameInput.select()},160);
+  }
+  fnNameInput.addEventListener('input',()=>{
+    if(fnNameInput.value.length>50)fnNameInput.value=fnNameInput.value.slice(0,50);
+    fnNameCounter.textContent=countChars(fnNameInput.value)+'/50';
+  });
+  fnNameInput.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();savePending(fnNameInput.value.trim())}});
+  $('fnSkipBtn').onclick=()=>savePending('');
+  $('fnDoneBtn').onclick=()=>savePending(fnNameInput.value.trim());
+
+  async function savePending(name){
+    if(!pendingFile){fileNameModalOverlay.classList.remove('active');return}
+    const note=await ensureActiveNoteCreated();
+    const f=pendingFile;
+    const isI=(f.type||'').startsWith('image/');
+    const isV=(f.type||'').startsWith('video/');
+    let nm=name||f.name||(isI?'Фото':(isV?'Видео':'Файл'));
+    if(nm.length>50)nm=nm.slice(0,50);
+    note.attachments.push({
+      id:'att_'+Date.now()+'_'+Math.random().toString(36).slice(2,7),
+      name:nm,originalName:f.name,mime:f.type||'application/octet-stream',
+      size:f.size||0,data:pendingDataUrl,createdAt:Date.now()
+    });
+    note.updatedAt=Date.now();
+    await dbSaveNote(note);
+    pendingFile=null;pendingDataUrl='';
+    fileNameModalOverlay.classList.remove('active');
+    renderAttachments();
+    updateAllCounters();
+    renderNotes();
+    showToast(isI?'Фото прикреплено':(isV?'Видео прикреплено':'Файл прикреплен'));
+  }
+
+  function openRenameModal(id){
+    const note=state.notes.find(n=>n.id===state.editingNoteId);
+    if(!note||!note.attachments)return;
+    const a=note.attachments.find(x=>x.id===id);
+    if(!a)return;
+    pendingRenameId=id;
+    renameInput.value=(a.name||'').slice(0,50);
+    renameCounter.textContent=countChars(renameInput.value)+'/50';
+    renameModalOverlay.classList.add('active');
+    setTimeout(()=>{renameInput.focus();renameInput.select()},160);
+  }
+  function closeRenameModal(){renameModalOverlay.classList.remove('active');pendingRenameId=null}
+  $('renameCancelBtn').onclick=closeRenameModal;
+  renameModalOverlay.onclick=e=>{if(e.target===renameModalOverlay)closeRenameModal()};
+  renameInput.addEventListener('input',()=>{
+    if(renameInput.value.length>50)renameInput.value=renameInput.value.slice(0,50);
+    renameCounter.textContent=countChars(renameInput.value)+'/50';
+  });
+  renameInput.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();saveRename()}});
+  $('renameSaveBtn').onclick=saveRename;
+
+  async function saveRename(){
+    if(!pendingRenameId)return;
+    const note=state.notes.find(n=>n.id===state.editingNoteId);
+    if(!note||!note.attachments)return;
+    const a=note.attachments.find(x=>x.id===pendingRenameId);
+    if(a){
+      a.name=((renameInput.value||'').trim()||a.name||'Файл').slice(0,50);
+      note.updatedAt=Date.now();
+      await dbSaveNote(note);
+      renderAttachments();
+      updateNoteMeta(note.updatedAt);
+      renderNotes();
+      showToast('Название обновлено');
+    }
+    closeRenameModal();
+  }
+
+  function dataURLtoBlob(d){
+    try{
+      const a=d.split(','),b=atob(a[1]),u=new Uint8Array(b.length);
+      for(let i=0;i<b.length;i++)u[i]=b.charCodeAt(i);
+      return new Blob([u],{type:'application/octet-stream'});
+    }catch(e){return null}
+  }
+  function downloadAttachment(att){
+    if(!att||!att.data){showToast('Файл отсутствует');return}
+    let nm=(att.originalName||att.name||'file').trim();
+    const m={'image/jpeg':'.jpg','image/png':'.png','image/webp':'.webp','image/gif':'.gif','video/mp4':'.mp4','video/webm':'.webm','video/quicktime':'.mov','video/3gpp':'.3gp','video/x-matroska':'.mkv','application/pdf':'.pdf','text/plain':'.txt','audio/mpeg':'.mp3','application/zip':'.zip'};
+    if(!nm.includes('.')&&att.mime&&m[att.mime])nm+=m[att.mime];
+    if(window.Android&&typeof window.Android.downloadBase64==='function'){
+      try{window.Android.downloadBase64(att.data,nm,'application/octet-stream');showToast('Скачивание: '+nm);return}catch(e){}
+    }
+    try{
+      const b=dataURLtoBlob(att.data);
+      if(b){
+        const u=URL.createObjectURL(b);
+        const a=document.createElement('a');
+        a.style.display='none';a.href=u;a.download=nm;
+        document.body.appendChild(a);a.click();
+        setTimeout(()=>{try{a.remove();URL.revokeObjectURL(u)}catch(e){}},2000);
+        showToast('Файл скачан: '+nm);return;
+      }
+    }catch(e){}
+    try{
+      let d=att.data;
+      if(d.startsWith('data:')&&!d.startsWith('data:application/octet-stream')){
+        d=d.replace(/^data:[^;]+;/,'data:application/octet-stream;');
+      }
+      const a=document.createElement('a');
+      a.style.display='none';a.href=d;a.download=nm;
+      document.body.appendChild(a);a.click();a.remove();
+      showToast('Файл скачан: '+nm);
+    }catch(e){showToast('Ошибка при скачивании')}
+  }
+  function promptDeleteAttachment(id){
+    const note=state.notes.find(n=>n.id===state.editingNoteId);
+    if(!note||!note.attachments)return;
+    const a=note.attachments.find(x=>x.id===id);
+    if(!a)return;
+    openConfirmDialog('Удалить файл?','Файл «'+a.name+'» будет удалён.','Удалить','danger',async()=>{
+      note.attachments=note.attachments.filter(x=>x.id!==id);
+      note.updatedAt=Date.now();
+      await dbSaveNote(note);
+      renderAttachments();
+      updateAllCounters();
+      renderNotes();
+      showToast('Файл удалён');
+    });
+  }
+  function renderAttachments(){
+    attachmentsContainer.innerHTML='';
+    const note=state.notes.find(n=>n.id===state.editingNoteId);
+    if(!note||!Array.isArray(note.attachments)||!note.attachments.length)return;
+    const frag=document.createDocumentFragment();
+    note.attachments.forEach(a=>{
+      const row=document.createElement('div');
+      row.className='attachment-row';
+      const dl=document.createElement('button');
+      dl.className='attach-download-btn';dl.type='button';dl.title='Скачать файл';
+      dl.innerHTML='<svg width="17" height="17" viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>';
+      dl.onclick=e=>{e.preventDefault();e.stopPropagation();downloadAttachment(a)};
+      row.appendChild(dl);
+      const lbl=document.createElement('span');
+      lbl.className='attach-name-label';lbl.textContent=a.name;
+      lbl.onclick=e=>{e.preventDefault();e.stopPropagation();downloadAttachment(a)};
+      row.appendChild(lbl);
+      const ed=document.createElement('button');
+      ed.className='attach-action-icon-btn';ed.type='button';ed.title='Изменить название';
+      ed.innerHTML='<svg width="17" height="17" viewBox="0 0 24 24"><path fill="currentColor" d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>';
+      ed.onclick=e=>{e.preventDefault();e.stopPropagation();openRenameModal(a.id)};
+      row.appendChild(ed);
+      if(!note.isDeleted){
+        const d=document.createElement('button');
+        d.className='attach-action-icon-btn attach-delete-btn';d.type='button';d.title='Удалить';
+        d.innerHTML='<svg width="17" height="17" viewBox="0 0 24 24"><path fill="currentColor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
+        d.onclick=e=>{e.preventDefault();e.stopPropagation();promptDeleteAttachment(a.id)};
+        row.appendChild(d);
+      }
+      frag.appendChild(row);
+    });
+    attachmentsContainer.appendChild(frag);
+  }
+
+  /* ============ FULLSCREEN EDITOR ============ */
+  let editorHistoryPushed=false;
+  let handlingHistoryBack=false;
+  try{
+    if(!history.state||history.state.app!=='notebook-root'){
+      history.replaceState({app:'notebook-root'},document.title,location.href);
+    }
+  }catch(e){}
+
+  function openFullscreenEditor(note){
+    closeToolsMenu();
+    lastEditorRange = null;
+
+    if(note){
+      state.editingNoteId=note.id;
+      if(!Array.isArray(note.attachments))note.attachments=[];
+      creatorTitle.innerHTML=linkifyHTML(note.title||'');
+      creatorText.innerHTML=linkifyHTML(note.content||'');
+      $('fsHeaderTitle').textContent='Заметка';
+      if(note.isDeleted){
+        $('editorPinBtn').style.display='none';
+        $('editorArchiveBtn').style.display='none';
+        $('editorDeleteBtn').style.display='none';
+        $('creatorSaveBtn').style.display='none';
+        $('trashRestoreBtn').style.display='inline-flex';
+        $('trashDeleteForeverBtn').style.display='inline-flex';
+        creatorTitle.contentEditable='false';
+        creatorText.contentEditable='false';
+        state.viewerMode=false;
+        fullscreenCreator.classList.remove('viewer-mode');
+      }else{
+        $('editorPinBtn').style.display='inline-flex';
+        $('editorArchiveBtn').style.display='inline-flex';
+        $('editorDeleteBtn').style.display='inline-flex';
+        $('creatorSaveBtn').style.display='inline-block';
+        $('trashRestoreBtn').style.display='none';
+        $('trashDeleteForeverBtn').style.display='none';
+        $('editorPinBtn').style.color=note.isPinned?'var(--primary)':'var(--text-secondary)';
+        $('editorArchiveBtn').style.color=note.isArchived?'var(--primary)':'var(--text-secondary)';
+        $('editorArchiveBtn').title=note.isArchived?'Из архива':'В архив';
+        setViewerMode(true);
+      }
+    }else{
+      state.editingNoteId=null;
+      setViewerMode(false);
+      creatorTitle.innerHTML='';
+      creatorText.innerHTML='';
+      $('fsHeaderTitle').textContent='Заметка';
+      $('editorPinBtn').style.display='none';
+      $('editorArchiveBtn').style.display='none';
+      $('editorDeleteBtn').style.display='none';
+      $('trashRestoreBtn').style.display='none';
+      $('trashDeleteForeverBtn').style.display='none';
+      $('creatorSaveBtn').style.display='inline-block';
+      creatorTitle.contentEditable='true';
+      creatorText.contentEditable='true';
+    }
+    renderAttachments();
+    updateAllCounters();
+    fullscreenCreator.classList.add('open');
+    state.lastFocusedEditor=creatorTitle;
+    updateFormatStates();
+    if(!note)setTimeout(()=>creatorTitle.focus(),200);
+    if(!editorHistoryPushed){
+      try{history.pushState({app:'notebook-editor'},document.title,location.href);editorHistoryPushed=true}catch(e){}
+    }
+  }
+
+  function closeFullscreenEditor(fromHistory){
+    fullscreenCreator.classList.remove('open');
+    fullscreenCreator.classList.remove('viewer-mode');
+    closeToolsMenu();
+    if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();
+    state.editingNoteId=null;
+    state.viewerMode=false;
+    lastEditorRange = null;
+    updateFormatStates();
+    if(editorHistoryPushed&&!fromHistory&&!handlingHistoryBack){
+      editorHistoryPushed=false;
+      try{history.back()}catch(e){}
+    }else if(fromHistory){
+      editorHistoryPushed=false;
+    }
+  }
+
+  async function saveNoteOnly(){
+    const nT=normalizeFormatting(sanitizeHTML(creatorTitle.innerHTML.trim()));
+    const nC=normalizeFormatting(sanitizeHTML(creatorText.innerHTML.trim()));
+    const title=linkifyHTML(nT);
+    const content=linkifyHTML(nC);
+    const tt=creatorTitle.innerText.trim();
+    const bt=creatorText.innerText.trim();
+    if(state.editingNoteId){
+      const note=state.notes.find(n=>n.id===state.editingNoteId);
+      if(note&&!note.isDeleted){
+        note.title=title||'Без названия';
+        note.content=content;
+        note.titleCharCount=countChars(tt);
+        note.bodyCharCount=countChars(bt);
+        note.updatedAt=Date.now();
+        if(!Array.isArray(note.attachments))note.attachments=[];
+        await dbSaveNote(note);
+        creatorTitle.innerHTML=title;
+        creatorText.innerHTML=content;
+        setViewerMode(true);
+        updateAllCounters();
+        updateNoteMeta(note.updatedAt);
+        renderNotes();
+        showToast('Сохранено');
+      }
+    }else if(tt||bt){
+      const n={
+        id:'note_'+Date.now()+'_'+Math.random().toString(36).slice(2,7),
+        title:title||'Без названия',
+        content,
+        isPinned:false,isArchived:false,isDeleted:false,deletedAt:null,
+        createdAt:Date.now(),updatedAt:Date.now(),
+        titleCharCount:countChars(tt),bodyCharCount:countChars(bt),attachments:[]
+      };
+      state.notes.unshift(n);
+      await dbSaveNote(n);
+      state.editingNoteId=n.id;
+      creatorTitle.innerHTML=title;
+      creatorText.innerHTML=content;
+      setViewerMode(true);
+      $('editorPinBtn').style.display='inline-flex';
+      $('editorArchiveBtn').style.display='inline-flex';
+      $('editorDeleteBtn').style.display='inline-flex';
+      $('editorPinBtn').style.color='var(--text-secondary)';
+      $('editorArchiveBtn').style.color='var(--text-secondary)';
+      $('editorArchiveBtn').title='В архив';
+      updateAllCounters();
+      updateNoteMeta(n.updatedAt);
+      renderNotes();
+      showToast('Сохранено');
+    }
+  }
+
+  $('fabAddBtn').onclick=()=>openFullscreenEditor(null);
+  $('fsCreatorBackBtn').onclick=async()=>{await saveNoteOnly();closeFullscreenEditor(false)};
+  $('creatorSaveBtn').onclick=saveNoteOnly;
+
+  $('editorPinBtn').onclick=async()=>{
+    if(!state.editingNoteId)return;
+    const note=state.notes.find(n=>n.id===state.editingNoteId);
+    if(!note)return;
+    note.isPinned=!note.isPinned;
+    if(note.isPinned)note.isArchived=false;
+    $('editorPinBtn').style.color=note.isPinned?'var(--primary)':'var(--text-secondary)';
+    await dbSaveNote(note);
+    renderNotes();
+    showToast(note.isPinned?'Заметка закреплена':'Заметка откреплена');
+  };
+  $('editorArchiveBtn').onclick=async()=>{
+    if(!state.editingNoteId)return;
+    const note=state.notes.find(n=>n.id===state.editingNoteId);
+    if(!note)return;
+    note.isArchived=!note.isArchived;
+    if(note.isArchived)note.isPinned=false;
+    await dbSaveNote(note);
+    renderNotes();
+    closeFullscreenEditor(false);
+    showToast(note.isArchived?'Заметка в архиве':'Заметка возвращена из архива');
+  };
+  $('editorDeleteBtn').onclick=()=>{
+    if(!state.editingNoteId)return;
+    const note=state.notes.find(n=>n.id===state.editingNoteId);
+    if(!note)return;
+    openConfirmDialog('Удалить заметку?','Она переместится в «Недавно удалённые».','Удалить','danger',async()=>{
+      note.isDeleted=true;note.isPinned=false;note.deletedAt=Date.now();
+      await dbSaveNote(note);
+      renderNotes();
+      closeFullscreenEditor(false);
+      showToast('Перемещено в «Недавно удалённые»');
+    });
+  };
+  $('trashRestoreBtn').onclick=()=>{
+    if(!state.editingNoteId)return;
+    const note=state.notes.find(n=>n.id===state.editingNoteId);
+    if(!note)return;
+    openConfirmDialog('Восстановить заметку?','Она вернётся к остальным записям.','Восстановить','primary',async()=>{
+      note.isDeleted=false;note.deletedAt=null;
+      await dbSaveNote(note);
+      renderNotes();
+      closeFullscreenEditor(false);
+      showToast('Заметка восстановлена');
+    });
+  };
+  $('trashDeleteForeverBtn').onclick=()=>{
+    if(!state.editingNoteId)return;
+    const note=state.notes.find(n=>n.id===state.editingNoteId);
+    if(!note)return;
+    openConfirmDialog('Удалить навсегда?','Это действие нельзя отменить.','Удалить','danger',async()=>{
+      state.notes=state.notes.filter(n=>n.id!==note.id);
+      await dbDeleteNote(note.id);
+      renderNotes();
+      closeFullscreenEditor(false);
+      showToast('Заметка удалена навсегда');
+    });
+  };
+
+  /* ============ CONFIRM ============ */
+  const confirmModal=$('confirmModal');
+  function openConfirmDialog(title,msg,btn,type,onConfirm){
+    $('confirmTitle').textContent=title;
+    $('confirmMessage').textContent=msg;
+    $('confirmProceedBtn').textContent=btn;
+    const ic=$('confirmIcon'),pr=$('confirmProceedBtn');
+    if(type==='danger'){
+      ic.className='confirm-icon-wrap danger';
+      pr.className='confirm-action-btn danger';
+      ic.innerHTML='<svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>';
+    }else{
+      ic.className='confirm-icon-wrap primary';
+      pr.className='confirm-action-btn primary';
+      ic.innerHTML='<svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>';
+    }
+    state.pendingActionOnConfirm=onConfirm;
+    confirmModal.classList.add('active');
+  }
+  function closeConfirmDialog(){
+    confirmModal.classList.remove('active');
+    state.pendingActionOnConfirm=null;
+  }
+  $('confirmCancelBtn').onclick=closeConfirmDialog;
+  $('confirmProceedBtn').onclick=()=>{
+    const f=state.pendingActionOnConfirm;
+    closeConfirmDialog();
+    if(f)f();
+  };
+
+  /* ============ LINK CLICK ============ */
+  function isViewerMode(){return state.viewerMode===true}
+  function handleLinkClick(url){
+    if(!isViewerMode())return;
+    const open=()=>{
+      if(window.cordova&&window.cordova.InAppBrowser)window.cordova.InAppBrowser.open(url,'_system');
+      else if(window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.Browser)window.Capacitor.Plugins.Browser.open({url});
+      else window.open(url,'_blank','noopener,noreferrer');
+    };
+    if(state.askLinkConfirm)openConfirmDialog('Открыть ссылку?','Вы переходите по адресу:\n'+url,'Открыть','primary',open);
+    else open();
+  }
+
+  let linkPtr=null;
+  document.addEventListener('pointerdown',e=>{
+    const l=e.target.closest('a.note-link');
+    linkPtr=l?{x:e.clientX,y:e.clientY,t:Date.now(),l}:null;
+  },true);
+
+  document.addEventListener('click',e=>{
+    const l=e.target.closest('a.note-link');
+    if(!l||!l.getAttribute('href'))return;
+    if(!state.linksClickable||!isViewerMode())return;
+    const sel=window.getSelection();
+    if(sel&&sel.toString().length>0)return;
+    if(linkPtr&&linkPtr.l===l){
+      const dx=Math.abs(e.clientX-linkPtr.x);
+      const dy=Math.abs(e.clientY-linkPtr.y);
+      if(dx>8||dy>8||Date.now()-linkPtr.t>600)return;
+    }
+    e.preventDefault();
+    e.stopPropagation();
+    handleLinkClick(l.href);
+  },true);
+
+  /* ============ SEARCH ============ */
+  const searchInput=$('searchInput');
+  const searchClearBtn=$('searchClearBtn');
+  let searchT=null;
+  searchInput.addEventListener('input',e=>{
+    state.searchQuery=e.target.value;
+    searchClearBtn.classList.toggle('visible',Boolean(state.searchQuery));
+    clearTimeout(searchT);
+    searchT=setTimeout(renderNotes,110);
+  });
+  searchClearBtn.onclick=()=>{
+    searchInput.value='';state.searchQuery='';
+    searchClearBtn.classList.remove('visible');
+    searchInput.focus();
+    renderNotes();
+  };
+
+  /* ============ NOTES RENDER ============ */
+  function createNoteCard(note){
+    const card=document.createElement('div');
+    card.className='note-card';
+    const t=document.createElement('div');
+    t.innerHTML=note.title||'Без названия';
+    const clean=t.innerText.trim()||'Без названия';
+    const files=Array.isArray(note.attachments)?note.attachments.length:0;
+    const badge=files>0?'<div class="card-attach-badge">📎 '+files+'</div>':'';
+    card.innerHTML='<div class="card-title">'+escapeHtml(clean)+'</div><div class="card-footer-info"><span>'+formatDate(note.updatedAt||note.createdAt)+'</span>'+badge+'</div>';
+    card.onclick=()=>openFullscreenEditor(note);
+    return card;
+  }
+
+  let renderRaf=null;
+  function renderNotes(){
+    if(renderRaf) cancelAnimationFrame(renderRaf);
+    renderRaf = requestAnimationFrame(renderNotesNow);
+  }
+
+  function renderNotesNow(){
+    const pc=$('pinnedContainer'),oc=$('othersContainer');
+    const ps=$('pinnedSection'),ol=$('othersLabel');
+    const es=$('emptyState'),nvs=$('notesViewSection'),ss=$('settingsSection');
+    const hsw=$('headerSearchWrap'),fab=$('fabAddBtn');
+    pc.innerHTML='';oc.innerHTML='';
+    if(state.currentView==='settings'){
+      nvs.style.display='none';es.style.display='none';
+      ss.style.display='block';hsw.style.visibility='hidden';
+      fab.style.display='none';
+      return;
+    }
+    ss.style.display='none';nvs.style.display='block';hsw.style.visibility='visible';
+    const isTrash=state.currentView==='trash';
+    const isArchive=state.currentView==='archive';
+    const q=(state.searchQuery||'').trim().toLowerCase();
+    fab.style.display=isTrash?'none':'flex';
+    let filtered=[];
+    if(isTrash)filtered=state.notes.filter(n=>n.isDeleted);
+    else if(isArchive)filtered=state.notes.filter(n=>!n.isDeleted&&n.isArchived);
+    else filtered=state.notes.filter(n=>!n.isDeleted&&!n.isArchived);
+    if(q){
+      filtered=filtered.filter(n=>{
+        if((n.title||'').toLowerCase().includes(q))return true;
+        if((n.content||'').toLowerCase().includes(q))return true;
+        return (n.attachments||[]).some(a=>(a.name||'').toLowerCase().includes(q));
+      });
+    }
+    if(!filtered.length){
+      es.style.display='block';
+      $('emptyStateText').textContent=q?'Ничего не найдено':isTrash?'В «Недавно удалённых» пусто':isArchive?'В архиве пусто':'Здесь пока нет заметок';
+      ps.style.display='none';ol.style.display='none';
+      return;
+    }
+    es.style.display='none';
+    const pn=(!isTrash&&!isArchive)?filtered.filter(n=>n.isPinned):[];
+    const on=(!isTrash&&!isArchive)?filtered.filter(n=>!n.isPinned):filtered;
+    if(pn.length){
+      ps.style.display='block';ol.style.display='block';
+      const f=document.createDocumentFragment();
+      pn.forEach(n=>f.appendChild(createNoteCard(n)));
+      pc.appendChild(f);
+    }else{
+      ps.style.display='none';ol.style.display='none';
+    }
+    const f=document.createDocumentFragment();
+    on.forEach(n=>f.appendChild(createNoteCard(n)));
+    oc.appendChild(f);
+  }
+
+  /* ============ SIDEBAR / NAV ============ */
+  const sidebar=$('sidebar');
+  const sidebarBackdrop=$('sidebarBackdrop');
+  function openSidebar(){sidebar.classList.add('open');sidebarBackdrop.classList.add('active')}
+  function closeSidebar(){sidebar.classList.remove('open');sidebarBackdrop.classList.remove('active')}
+  function toggleSidebar(){sidebar.classList.contains('open')?closeSidebar():openSidebar()}
+  $('menuToggleBtn').onclick=e=>{e.stopPropagation();toggleSidebar()};
+  sidebarBackdrop.onclick=e=>{e.preventDefault();e.stopPropagation();closeSidebar()};
+  function navigate(view){
+    state.currentView=view;
+    document.querySelectorAll('.nav-item').forEach(el=>el.classList.toggle('active',el.getAttribute('data-view')===view));
+    closeSidebar();
+    renderNotes();
+  }
+  $('sidebarBrandTitle').onclick=()=>navigate('notes');
+  $('navNotes').onclick=()=>navigate('notes');
+  $('navArchive').onclick=()=>navigate('archive');
+  $('navTrash').onclick=()=>navigate('trash');
+  $('navSettings').onclick=()=>navigate('settings');
+
+  /* ============ SETTINGS TOGGLES ============ */
+  function updateLinkUI(){
+    $('linksClickableToggle').classList.toggle('active',state.linksClickable);
+    $('linkConfirmToggle').classList.toggle('active',state.askLinkConfirm);
+    const r=$('linkConfirmRow');
+    r.style.opacity=state.linksClickable?'1':'0.45';
+    r.style.pointerEvents=state.linksClickable?'auto':'none';
+  }
+  $('linksClickableRow').onclick=()=>{
+    state.linksClickable=!state.linksClickable;
+    try{localStorage.setItem('rc_links_clickable',String(state.linksClickable))}catch(e){}
+    document.body.classList.toggle('links-disabled',!state.linksClickable);
+    updateLinkUI();
+    showToast(state.linksClickable?'Кликабельные ссылки включены':'Кликабельные ссылки выключены');
+  };
+  $('linkConfirmRow').onclick=()=>{
+    state.askLinkConfirm=!state.askLinkConfirm;
+    try{localStorage.setItem('rc_ask_link',String(state.askLinkConfirm))}catch(e){}
+    updateLinkUI();
+    showToast(state.askLinkConfirm?'Запрос о переходе включён':'Запрос о переходе выключен');
+  };
+
+  /* ============ BACK HANDLING ============ */
+  async function handleAppBack(){
+    if(fileNameModalOverlay.classList.contains('active'))return true;
+    if(renameModalOverlay.classList.contains('active')){closeRenameModal();return true}
+    if(attachSourceMenu.classList.contains('active')){closeAttachMenu();return true}
+    if(confirmModal.classList.contains('active')){closeConfirmDialog();return true}
+    if(toolsDropdown&&toolsDropdown.classList.contains('open')){closeToolsMenu();return true}
+    if(sidebar.classList.contains('open')){closeSidebar();return true}
+    if(fullscreenCreator.classList.contains('open')){
+      await saveNoteOnly();
+      handlingHistoryBack=true;
+      closeFullscreenEditor(true);
+      setTimeout(()=>{handlingHistoryBack=false},0);
+      return true;
+    }
+    return false;
+  }
+  document.addEventListener('backbutton',async e=>{
+    if(e&&e.preventDefault)e.preventDefault();
+    await handleAppBack();
+  },false);
+  window.handleAndroidBack=handleAppBack;
+  window.addEventListener('popstate',async()=>{
+    if(fileNameModalOverlay.classList.contains('active'))return;
+    if(renameModalOverlay.classList.contains('active')){closeRenameModal();return}
+    if(attachSourceMenu.classList.contains('active')){closeAttachMenu();return}
+    if(fullscreenCreator.classList.contains('open')){
+      await saveNoteOnly();
+      handlingHistoryBack=true;
+      closeFullscreenEditor(true);
+      setTimeout(()=>{handlingHistoryBack=false},0);
+      return;
+    }
+    if(confirmModal.classList.contains('active')){closeConfirmDialog();return}
+    if(sidebar.classList.contains('open')){closeSidebar();return}
+  });
+
+  /* ============ START ============ */
+  async function startApp(){
+    document.body.setAttribute('data-theme',state.theme);
+    const m=document.querySelector('meta[name="theme-color"]');
+    const t=THEMES.find(x=>x.id===state.theme);
+    if(m&&t)m.setAttribute('content',t.bg);
+    renderThemeGrids();
+    updateLinkUI();
+    document.body.classList.toggle('links-disabled',!state.linksClickable);
+
+    // Принудительно тег-режим (не CSS-стили)
+    try{ document.execCommand('styleWithCSS', false, false); }catch(e){}
+
+    setupFormatToolbar('toolsDropdown',[creatorTitle,creatorText]);
+
+    await initDB();
+    state.notes=await dbGetAllNotes();
+    renderNotesNow();
+  }
+  startApp();
+})();
+</script>
+</body>
+</html>
